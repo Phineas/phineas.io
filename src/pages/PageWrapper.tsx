@@ -19,7 +19,7 @@ const pageTransition = {
   duration: 0.5,
 };
 
-const PageWrapper = ({ children }: {children: ReactElement | ReactElement[]}) => {
+const PageWrapper = ({ children, forceReadableWidth }: {children: ReactElement | ReactElement[], forceReadableWidth?: boolean}) => {
   return (
     <motion.div
       initial="initial"
@@ -27,6 +27,7 @@ const PageWrapper = ({ children }: {children: ReactElement | ReactElement[]}) =>
       exit="out"
       variants={pageVariants}
       transition={pageTransition}
+      style={{width: forceReadableWidth ? '65ch' : undefined}}
     >
       {children}
     </motion.div>

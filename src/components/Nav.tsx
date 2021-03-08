@@ -3,7 +3,8 @@ import { useCallback, useMemo, useRef, useState } from "react";
 import { useHistory, useLocation } from "react-router";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { GitHubLogo, KeyIcon, TwitterLogo } from "./Icons";
+import { ChevronDown, GitHubLogo, KeyIcon, TwitterLogo } from "./Icons";
+import IconButton from './IconButton';
 
 const pathnameOffsets: { [key: string]: number } = {
   "/": 0,
@@ -61,7 +62,12 @@ const Nav = () => {
         animate={{ top: pageIndicatorOffsetWithDecoration }}
       />
       <Items>
-        <Title>Phineas Walton</Title>
+        <Row>
+          <Title>Phineas Walton</Title>
+          <IconButton>
+            <ChevronDown/>
+          </IconButton>
+        </Row>
         <div ref={dragConstraintsRef}>
           <Page active={pathname === "/"} to="/">
             what I do
@@ -113,6 +119,13 @@ const Items = styled.div`
   display: flex;
   flex-direction: column;
   height: 100%;
+`;
+
+const Row = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 `;
 
 const Title = styled.div`

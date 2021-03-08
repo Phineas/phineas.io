@@ -6,9 +6,10 @@ import SuccessiveType from "./components/SuccessiveType";
 import Nav from "./components/Nav";
 import Home from "./pages/Home";
 import Where from "./pages/Where";
+import How from "./pages/How";
 
 function App() {
-  const [introEnded, setIntroEnded] = useState(true);
+  const [introEnded, setIntroEnded] = useState(false);
 
   useEffect(() => {
     const script = document.createElement("script");
@@ -57,6 +58,7 @@ function App() {
               <Switch>
                 <Route exact path="/" component={Home} />
                 <Route exact path="/where" component={Where} />
+                <Route exact path="/how" component={How} />
               </Switch>
             </AnimatePresence>
           </ContentWrapper>
@@ -99,8 +101,8 @@ const MainContent = styled(motion.div)`
 
 const ContentWrapper = styled.div`
   margin-left: 15rem;
-  width: 65ch;
   padding: 2rem;
+  width: 100%;
   box-sizing: border-box;
   font-size: 1rem;
 `;
