@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import styled from "styled-components";
+import useSound from "use-sound";
 
 const Word = ({word}: {word: string}) => {
   const [filled, setFilled] = useState(false);
@@ -24,6 +25,8 @@ interface ISuccessiveTypeProps {
 }
 
 const SuccessiveType = ({words, speed, onEnd}: ISuccessiveTypeProps) => {
+  const [play] = useSound('/p-static/sounds/type.ogg');
+
   const [index, setIndex] = useState(0);
 
   const splitWords: string[] = useMemo(() => words.split(" "), [words]);
@@ -45,6 +48,9 @@ const SuccessiveType = ({words, speed, onEnd}: ISuccessiveTypeProps) => {
     }, currentWord.length * (Math.E * 12.5) + (currentWord[currentWord.length-1] === '.' ? 500 : 0));
   }, [index, splitWords]);
 
+  useEffect(() => {
+    play();
+  }, [index, play]);
 
   return (
     <Container>

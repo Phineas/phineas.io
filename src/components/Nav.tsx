@@ -1,33 +1,117 @@
+import { motion, PanInfo } from "framer-motion";
+import { useCallback, useMemo, useRef, useState } from "react";
+import { useHistory, useLocation } from "react-router";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
-import {TwitterLogo} from './Icons';
+import { GitHubLogo, KeyIcon, TwitterLogo } from "./Icons";
+
+const pathnameOffsets: { [key: string]: number } = {
+  "/": 0,
+  "/where": 39,
+  "/how": 78,
+  "/etc": 117,
+};
 
 const Nav = () => {
+  const history = useHistory();
+  const { pathname } = useLocation();
+
+  const [dragYOffset, setDragYOffset] = useState(0);
+
+  const dragConstraintsRef = useRef(null);
+
+  const pageIndicatorOffset = useMemo(
+    () => (pathname ? pathnameOffsets[pathname] : 0),
+    [pathname]
+  );
+
+  const pageIndicatorOffsetWithDecoration = useMemo(
+    () => 71 + pageIndicatorOffset - dragYOffset,
+    [pageIndicatorOffset, dragYOffset]
+  );
+
+  const onPageIndicatorDragEnd = useCallback(
+    (_event, info: PanInfo) => {
+      const goal = pageIndicatorOffset + info.offset.y;
+
+      const closest = Object.entries(pathnameOffsets).reduce(
+        ([prevPath, prevOffset], [curPath, curOffset]) => {
+          return Math.abs(curOffset - goal) < Math.abs(prevOffset - goal)
+            ? [curPath, curOffset]
+            : [prevPath, prevOffset];
+        }
+      );
+
+      if (closest[0] === pathname) return;
+
+      console.log(info);
+      setDragYOffset(dragYOffset + info.offset.y + info.velocity.y);
+      history.push(closest[0]);
+    },
+    [history, pageIndicatorOffset, dragYOffset, pathname]
+  );
+
   return (
     <Container>
-      <Title>
-        Phineas Walton
-      </Title>
-      <Page>what I do</Page>
-      <Page>where I've done it</Page>
-      <Page>how I do it</Page>
-      <Page>more + contact</Page>
+      <PageIndicator
+        whileHover={{ width: 3 }}
+        drag="y"
+        onDragEnd={onPageIndicatorDragEnd}
+        dragConstraints={dragConstraintsRef}
+        animate={{ top: pageIndicatorOffsetWithDecoration }}
+      />
+      <Items>
+        <Title>Phineas Walton</Title>
+        <div ref={dragConstraintsRef}>
+          <Page active={pathname === "/"} to="/">
+            what I do
+          </Page>
+          <Page active={pathname === "/where"} to="/where">
+            where I've done it
+          </Page>
+          <Page active={pathname === "/how"} to="/how">
+            how I do it
+          </Page>
+          <Page active={pathname === "/etc"} to="/etc">
+            more + contact
+          </Page>
+        </div>
 
-      <Icons>
-        <TwitterLogo/>
-      </Icons>
+        <Icons>
+          <TwitterLogo />
+          <GitHubLogo />
+          <KeyIcon />
+        </Icons>
+      </Items>
     </Container>
-  )
-}
+  );
+};
 
 const Container = styled.aside`
-  display: inline-flex;
+  display: inline-block;
+  box-sizing: border-box;
   flex-direction: column;
   padding: 2rem;
   position: fixed;
   top: 0;
   left: 0;
-  max-width: 33rem;
+  width: 15rem;
   border-right: 1px solid #101010;
+  height: 100vh;
+`;
+
+const PageIndicator = styled(motion.div)`
+  width: 1px;
+  height: 39px;
+  background-color: #fff;
+  position: absolute;
+  right: -1px;
+  cursor: pointer;
+`;
+
+const Items = styled.div`
+  display: flex;
+  flex-direction: column;
   height: 100%;
 `;
 
@@ -36,20 +120,33 @@ const Title = styled.div`
   padding: 10px 0px;
 `;
 
-const Page = styled.a`
-  color: #ccc;
+const Page = styled(Link)<{ active: boolean }>`
+  color: ${({ active }) => (active ? "#fff" : "#ccc")};
   padding: 10px 0px;
   display: flex;
+
+  &:hover {
+    /* background-color: #fff; */
+    color: #fff;
+  }
 `;
 
 const Icons = styled.div`
   margin-top: auto;
-  color: #fff;
-  fill: #fff;
+  color: #ccc;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
 
   svg {
     width: 20px;
     height: 20px;
+    cursor: pointer;
+
+    &:hover {
+      color: #fff;
+    }
   }
 `;
 
