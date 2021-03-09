@@ -5,7 +5,7 @@ import { ElixirLogo, RabbitMQLogo, ReactLogo, RustLogo, TypescriptLogo } from ".
 const How = () => {
   return (
     <PageWrapper>
-      <h1>how I do it</h1>
+      <h1>How I Do It</h1>
       <p>
         I highly leverage new bleeding-edge technologies and languages like
         Elixir to stay on top of the game. You can find a list of my most-used

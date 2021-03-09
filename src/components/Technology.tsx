@@ -1,6 +1,5 @@
 import { ReactElement } from "react";
 import styled from "styled-components";
-import { ElixirLogo } from "./Icons";
 
 const Technology = ({
   color,
