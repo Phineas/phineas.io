@@ -1,6 +1,6 @@
 import PageWrapper from "./PageWrapper";
 import Technology from "../components/Technology";
-import { ElixirLogo, ReactLogo, RustLogo } from "../components/Icons"
+import { ElixirLogo, RabbitMQLogo, ReactLogo, RustLogo, TypescriptLogo } from "../components/Icons"
 
 const How = () => {
   return (
@@ -26,7 +26,7 @@ const How = () => {
         color="#232340"
         icon={<ReactLogo/>}
         name="React"
-        type="Frontend"
+        type="Frontend framework"
         useCase={
           "Constructing stateful and durable frontends for large and interactive web apps"
         }
@@ -39,6 +39,26 @@ const How = () => {
         type="Backend, System"
         useCase={
           "Optimizing parts of Elixir code using Rust NIFs and writing efficient system code"
+        }
+      />
+
+      <Technology
+        color="#007acc"
+        icon={<TypescriptLogo/>}
+        name="TypeScript"
+        type="JS Framework"
+        useCase={
+          "Types for JS - will save your life when projects expand"
+        }
+      />
+
+      <Technology
+        color="#FF6600"
+        icon={<RabbitMQLogo/>}
+        name="RabbitMQ"
+        type="Message queue"
+        useCase={
+          "Messaging between different services in a robust & durable way"
         }
       />
     </PageWrapper>

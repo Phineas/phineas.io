@@ -7,6 +7,7 @@ import Nav from "./components/Nav";
 import Home from "./pages/Home";
 import Where from "./pages/Where";
 import How from "./pages/How";
+import Etc from "./pages/Etc";
 
 function App() {
   const [introEnded, setIntroEnded] = useState(false);
@@ -33,7 +34,7 @@ function App() {
         <SuccessiveType
           onEnd={onIntroEnd}
           words={
-            "Software was meant to feel light and effortless to use. As we're all developing new products so rapidly, bloat in our code is catching up with Moore's law. I design simple but effective, highly-scalable and realtime products for the future."
+            "Software was meant to feel light and effortless to use. As we're all developing new products so rapidly, bloat in our code is catching up with us. I design simple but effective, highly-scalable and realtime products for the future."
           }
           speed={1}
         />
@@ -59,6 +60,7 @@ function App() {
                 <Route exact path="/" component={Home} />
                 <Route exact path="/where" component={Where} />
                 <Route exact path="/how" component={How} />
+                <Route exact path="/etc" component={Etc} />
               </Switch>
             </AnimatePresence>
           </ContentWrapper>
@@ -105,6 +107,12 @@ const ContentWrapper = styled.div`
   width: 100%;
   box-sizing: border-box;
   font-size: 1rem;
+
+  a {
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 `;
 
 export default App;

@@ -1,10 +1,11 @@
 import { motion, PanInfo } from "framer-motion";
-import { useCallback, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useHistory, useLocation } from "react-router";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { ChevronDown, GitHubLogo, KeyIcon, TwitterLogo } from "./Icons";
 import IconButton from './IconButton';
+import useSound from "use-sound";
 
 const pathnameOffsets: { [key: string]: number } = {
   "/": 0,
@@ -17,9 +18,15 @@ const Nav = () => {
   const history = useHistory();
   const { pathname } = useLocation();
 
+  const [playSwitchPageSound] = useSound('/p-static/sounds/switch-page.mp3');
+
   const [dragYOffset, setDragYOffset] = useState(0);
 
   const dragConstraintsRef = useRef(null);
+
+  useEffect(() => {
+    playSwitchPageSound();
+  }, [pathname])
 
   const pageIndicatorOffset = useMemo(
     () => (pathname ? pathnameOffsets[pathname] : 0),

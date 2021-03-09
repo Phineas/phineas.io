@@ -19,7 +19,7 @@ const Technology = ({
     <Container>
       <Head color={color}>{icon}</Head>
 
-      <Column forceWidth={80}>
+      <Column forceWidth={110}>
         <h5>name</h5>
         <p>{name}</p>
       </Column>
@@ -44,6 +44,10 @@ const Container = styled.div`
   border-radius: 10px;
   overflow: hidden;
   margin-bottom: 1rem;
+
+  &:hover {
+    background-color: #101010;
+  }
 `;
 
 const Head = styled.div<{ color: string }>`
@@ -54,6 +58,7 @@ const Head = styled.div<{ color: string }>`
   justify-content: center;
   fill: #fff;
   background-color: ${({ color }) => color};
+  flex-shrink: 0;
 
   svg {
     height: 30px;
@@ -62,10 +67,11 @@ const Head = styled.div<{ color: string }>`
 `;
 
 const Column = styled.div<{ forceWidth?: number; noBorder?: boolean }>`
+  display: block;
   height: 100%;
   width: ${({ forceWidth }) =>
     forceWidth ? forceWidth + "px" : "fit-content"};
-  min-width: ${({ forceWidth }) => forceWidth};
+  min-width: ${({ forceWidth }) => forceWidth ? forceWidth + 'px' : undefined};
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -73,6 +79,7 @@ const Column = styled.div<{ forceWidth?: number; noBorder?: boolean }>`
     ${({ noBorder }) => (noBorder ? "transparent" : "#101010")};
   padding: 1rem;
   box-sizing: border-box;
+  flex-shrink: ${({noBorder}) => noBorder ? undefined : 0};
 
   h5 {
     font-family: "Courier New";
@@ -82,6 +89,7 @@ const Column = styled.div<{ forceWidth?: number; noBorder?: boolean }>`
 
   p {
     margin: 0;
+    white-space: normal;
   }
 `;
 
