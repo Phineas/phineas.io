@@ -1,5 +1,5 @@
 import { motion, PanInfo } from "framer-motion";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { createRef, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useHistory, useLocation } from "react-router";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
@@ -33,15 +33,13 @@ const Nav = () => {
   const [presenceActive, setPresenceActive] = useState(false);
 
   const dragConstraintsRef = useRef(null);
-  const presenceRef = useRef<HTMLAnchorElement | null>(null);
-
+  const presenceRef = createRef<HTMLDivElement>();
+  console.log('YOOO', presenceRef)
 
   useEffect(() => {
-    console.log(presenceRef)
-
     if(openOnMobile) setOpenOnMobile(false);
     playSwitchPageSound();
-  }, [pathname, presenceRef]);
+  }, [pathname]);
 
   const pageIndicatorOffset = useMemo(
     () => (pathname ? pathnameOffsets[pathname] ?? -120 : 0),
@@ -96,9 +94,9 @@ const Nav = () => {
           {!openOnMobile ?
           <Row>
             <Title>Phineas Walton</Title>
-            <IconButton>
+            {/* <IconButton>
               <ChevronDown />
-            </IconButton>
+            </IconButton> */}
           </Row> : null}
           <div ref={dragConstraintsRef}>
             <Page active={pathname === "/"} to="/">
@@ -120,7 +118,7 @@ const Nav = () => {
             <GitHubLogo />
             <KeyIcon />
           </Icons>
-          <Doing ref={presenceRef} animate={{y: presenceActive ? 0 : presenceRef.current?.clientHeight || 200}} setActive={setPresenceActive} />
+          <Doing style={{display: presenceActive ? 'block' : 'none'}} setActive={setPresenceActive} />
         </Items>
       </Container>
     </>

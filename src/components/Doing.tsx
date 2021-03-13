@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ReactElement, useEffect, useState } from "react";
+import { forwardRef, ReactElement, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styled, { keyframes } from "styled-components";
 import SpotifyLogo from '../assets/images/spotify-logo.svg';
@@ -7,7 +7,7 @@ import Progress from "./Progress";
 
 // let progressInterval;
 
-const Doing = ({setActive}: {setActive: (active: boolean) => void} & any) => {
+const Doing = ({setActive, ...props}: {setActive: (active: boolean) => void} & any, ref: any) => {
   const [doing, setDoing] = useState<any | null>(null);
 
   useEffect(() => {
@@ -33,7 +33,7 @@ const Doing = ({setActive}: {setActive: (active: boolean) => void} & any) => {
   if(!doing) return null;
 
   return (
-    <Container to={"/presence"}>
+    <Container ref={ref} to={"/presence"} {...props}>
       <h5>Listening to Spotify <LiveDot/></h5>
       {doing?.listening_to_spotify ? <>
       <ActivityRow>
@@ -140,4 +140,4 @@ const ActivityInfo = styled.div`
   }
 `;
 
-export default Doing;
+export default forwardRef(Doing);
