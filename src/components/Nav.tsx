@@ -34,7 +34,6 @@ const Nav = () => {
 
   const dragConstraintsRef = useRef(null);
   const presenceRef = createRef<HTMLDivElement>();
-  console.log('YOOO', presenceRef)
 
   useEffect(() => {
     if(openOnMobile) setOpenOnMobile(false);
@@ -65,7 +64,6 @@ const Nav = () => {
 
       if (closest[0] === pathname) return;
 
-      console.log(info);
       setDragYOffset(dragYOffset + info.offset.y + info.velocity.y);
       history.push(closest[0]);
     },
