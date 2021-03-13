@@ -114,9 +114,9 @@ const Nav = () => {
           </div>
 
           <Icons>
-            <TwitterLogo />
-            <GitHubLogo />
-            <KeyIcon />
+            <a href="https://twitter.com/phineyes"><TwitterLogo /></a>
+            <a href="https://github.com/phineas"><GitHubLogo /></a>
+            <a href="https://keybase.io/phineas"><KeyIcon /></a>
           </Icons>
           <Doing style={{display: presenceActive ? 'block' : 'none'}} setActive={setPresenceActive} />
         </Items>
@@ -227,6 +227,7 @@ const Icons = styled.div`
     width: 20px;
     height: 20px;
     cursor: pointer;
+    color: #ccc;
 
     &:hover {
       color: #fff;

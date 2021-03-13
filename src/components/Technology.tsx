@@ -44,6 +44,11 @@ const Container = styled.div`
   overflow: hidden;
   margin-bottom: 1rem;
 
+  @media (max-width: 850px) {
+    flex-direction: column;
+    height: auto;
+  }
+
   &:hover {
     background-color: #101010;
   }
@@ -58,6 +63,11 @@ const Head = styled.div<{ color: string }>`
   fill: #fff;
   background-color: ${({ color }) => color};
   flex-shrink: 0;
+
+  @media (max-width: 850px) {
+    height: 50px;
+    width: 100%;
+  }
 
   svg {
     height: 30px;
@@ -79,6 +89,15 @@ const Column = styled.div<{ forceWidth?: number; noBorder?: boolean }>`
   padding: 1rem;
   box-sizing: border-box;
   flex-shrink: ${({noBorder}) => noBorder ? undefined : 0};
+
+  @media (max-width: 850px) {
+    height: 50px;
+    width: 100%;
+    border-bottom: 1px solid ${({ noBorder }) => (noBorder ? "transparent" : "#101010")};
+    padding: 1rem;
+    flex-shrink: 0;
+    box-sizing: content-box;
+  }
 
   h5 {
     font-family: "Courier New";
