@@ -1,9 +1,8 @@
 import { motion } from "framer-motion";
-import { forwardRef, ReactElement, useEffect, useState } from "react";
+import { forwardRef, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styled, { keyframes } from "styled-components";
 import SpotifyLogo from '../assets/images/spotify-logo.svg';
-import Progress from "./Progress";
 
 // let progressInterval;
 
@@ -17,8 +16,7 @@ const Doing = ({setActive, ...props}: {setActive: (active: boolean) => void} & a
       if(body.success) {
         setDoing(body.data);
 
-        if(body.data.listening_to_spotify) setActive(true);
-        else setActive(false);
+       setActive(!!body.data.listening_to_spotify); 
       }
     }
     

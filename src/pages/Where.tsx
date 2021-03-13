@@ -5,7 +5,6 @@ import HivenAppIcon from '../assets/images/hiven-app-icon.png';
 import GigglAppIcon from '../assets/images/giggl-app-icon.jpg';
 import HonkAppIcon from '../assets/images/honk-app-icon.jpg';
 import Repo from "../components/Repo";
-import { CompassIcon } from "../components/Icons";
 
 const Where = () => {
   return (

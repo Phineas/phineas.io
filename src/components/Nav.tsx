@@ -4,14 +4,12 @@ import { useHistory, useLocation } from "react-router";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import {
-  ChevronDown,
   GitHubLogo,
   KeyIcon,
   MenuIcon,
   TwitterLogo,
   XIcon,
 } from "./Icons";
-import IconButton from "./IconButton";
 import Doing from "./Doing";
 import useSound from "use-sound";
 
@@ -33,7 +31,6 @@ const Nav = () => {
   const [presenceActive, setPresenceActive] = useState(false);
 
   const dragConstraintsRef = useRef(null);
-  const presenceRef = createRef<HTMLDivElement>();
 
   useEffect(() => {
     if(openOnMobile) setOpenOnMobile(false);

@@ -9,7 +9,6 @@ import Where from "./pages/Where";
 import How from "./pages/How";
 import Etc from "./pages/Etc";
 import Presence from "./pages/Presence";
-import Progress from "./components/Progress";
 import { ChevronsRight } from "./components/Icons";
 
 function App() {

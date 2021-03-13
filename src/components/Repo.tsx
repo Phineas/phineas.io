@@ -1,4 +1,3 @@
-import { ReactElement } from "react";
 import styled from "styled-components";
 
 const Repo = ({
@@ -69,22 +68,6 @@ const Container = styled.div`
 
   &:hover {
     background-color: #101010;
-  }
-`;
-
-const Head = styled.div<{ color: string }>`
-  height: 100%;
-  width: 100px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  fill: #fff;
-  background-color: ${({ color }) => color};
-  flex-shrink: 0;
-
-  svg {
-    height: 30px;
-    width: 30px;
   }
 `;
 

@@ -1,4 +1,3 @@
-import Progress from "../components/Progress";
 import PageWrapper from "./PageWrapper";
 
 const Home = () => {
