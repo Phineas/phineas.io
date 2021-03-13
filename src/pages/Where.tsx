@@ -20,6 +20,7 @@ const Where = () => {
       </CoWrapper>
 
       <h3>Open-source Projects</h3>
+      <Repo name={"lanyard"} url={"https://github.com/phineas/lanyard"} primaryLanguage={"Elixir"} description="Expose your Discord presence to an API in <10 seconds (used on this site)"/>
       <Repo name={"node_compass"} url={"https://github.com/hivenapp/node_compass"} primaryLanguage={"Elixir"} description="Automatic hash ring management for Elixir nodes"/>
       <Repo name={"phineas.io"} url={"https://github.com/phineas/phineas.io"} primaryLanguage={"TypeScript"} description="This very website"/>
     </PageWrapper>

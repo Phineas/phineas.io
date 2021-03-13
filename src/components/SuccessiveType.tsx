@@ -21,10 +21,11 @@ const Word = ({word}: {word: string}) => {
 interface ISuccessiveTypeProps {
   words: string;
   speed: number;
-  onEnd?: () => void
+  userSkipped?: boolean;
+  onEnd?: () => void;
 }
 
-const SuccessiveType = ({words, speed, onEnd}: ISuccessiveTypeProps) => {
+const SuccessiveType = ({words, speed, userSkipped, onEnd}: ISuccessiveTypeProps) => {
   const [play] = useSound('/p-static/sounds/type.ogg');
 
   const [index, setIndex] = useState(0);
@@ -36,7 +37,7 @@ const SuccessiveType = ({words, speed, onEnd}: ISuccessiveTypeProps) => {
     if(index === splitWords.length-1) {
       if(onEnd) setTimeout(() => {
         onEnd();
-      }, 1500);
+      }, 1800);
 
       return;
     }
@@ -49,8 +50,8 @@ const SuccessiveType = ({words, speed, onEnd}: ISuccessiveTypeProps) => {
   }, [index, splitWords]);
 
   useEffect(() => {
-    play();
-  }, [index, play]);
+    if(!userSkipped) play();
+  }, [index, play, userSkipped]);
 
   return (
     <Container>

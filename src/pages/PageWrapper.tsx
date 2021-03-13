@@ -27,7 +27,7 @@ const PageWrapper = ({ children, forceReadableWidth }: {children: ReactElement |
       exit="out"
       variants={pageVariants}
       transition={pageTransition}
-      style={{width: forceReadableWidth ? '65ch' : undefined}}
+      style={{maxWidth: forceReadableWidth ? '65ch' : undefined, minWidth: 0}}
     >
       {children}
     </motion.div>

@@ -8,6 +8,9 @@ import Home from "./pages/Home";
 import Where from "./pages/Where";
 import How from "./pages/How";
 import Etc from "./pages/Etc";
+import Presence from "./pages/Presence";
+import Progress from "./components/Progress";
+import { ChevronsRight } from "./components/Icons";
 
 function App() {
   const [introEnded, setIntroEnded] = useState(false);
@@ -22,6 +25,7 @@ function App() {
   }, []);
 
   const onIntroEnd = useCallback(() => {
+    localStorage.setItem("v1:intro-completed", "true");
     setIntroEnded(true);
   }, []);
 
@@ -31,12 +35,16 @@ function App() {
         transition={{ duration: 0.85 }}
         animate={{ y: introEnded ? -window.innerHeight : 0 }}
       >
+        <ProgressContainer onClick={onIntroEnd}>
+          <h4>Skip intro <ChevronsRight/></h4>
+        </ProgressContainer>
         <SuccessiveType
           onEnd={onIntroEnd}
           words={
             "Software was meant to feel light and effortless to use. As we're all developing new products so rapidly, bloat in our code is catching up with us. I design simple but effective, highly-scalable and realtime products for the future."
           }
           speed={1}
+          userSkipped={introEnded}
         />
       </SuccessiveTypeContainer>
 
@@ -61,6 +69,7 @@ function App() {
                 <Route exact path="/where" component={Where} />
                 <Route exact path="/how" component={How} />
                 <Route exact path="/etc" component={Etc} />
+                <Route exact path="/presence" component={Presence} />
               </Switch>
             </AnimatePresence>
           </ContentWrapper>
@@ -81,15 +90,32 @@ const Wrapper = styled.div`
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
-    z-index: -1;
+    height: 100vh;
+    z-index: 0;
   }
 `;
 
 const SuccessiveTypeContainer = styled(motion.div)`
   width: 65ch;
-  height: 300px;
+  height: 350px;
   padding: 2rem;
+  position: relative;
+  z-index: 1;
+`;
+
+const ProgressContainer = styled.div`
+  vertical-align: middle;
+  cursor: pointer;
+  transition: color 0.2s ease;
+
+  svg {
+    vertical-align: middle;
+    height: 19px;
+  }
+
+  &:hover {
+    color: #ff65b2;
+  }
 `;
 
 const MainContent = styled(motion.div)`
@@ -99,6 +125,11 @@ const MainContent = styled(motion.div)`
   display: flex;
   flex-direction: row;
   overflow-y: auto;
+
+  @media (max-width:850px) { 
+    flex-direction: column;
+    /* padding-top: 65px; */
+  }
 `;
 
 const ContentWrapper = styled.div`
@@ -112,6 +143,11 @@ const ContentWrapper = styled.div`
     &:hover {
       text-decoration: underline;
     }
+  }
+
+  @media (max-width:850px)  { 
+    margin-left: 0px;
+    padding-top: 65px;
   }
 `;
 
