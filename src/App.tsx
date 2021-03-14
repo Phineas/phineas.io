@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from "framer-motion";
-import { useCallback, useEffect, useState } from "react";
+import { KeyboardEvent, useCallback, useEffect, useState } from "react";
 import styled from "styled-components";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import SuccessiveType from "./components/SuccessiveType";
@@ -14,6 +14,12 @@ import { ChevronsRight } from "./components/Icons";
 function App() {
   const [introEnded, setIntroEnded] = useState(false);
 
+  const onKeyDown = (e: KeyboardEvent<HTMLDocument> & any) => {
+    if((e.keyCode === 9 || e.which === 9) && !introEnded) {
+      e.preventDefault();
+    }
+  };
+
   useEffect(() => {
     const script = document.createElement("script");
 
@@ -21,6 +27,8 @@ function App() {
     script.async = true;
 
     document.body.appendChild(script);
+
+    document.addEventListener('keydown', onKeyDown);
   }, []);
 
   const onIntroEnd = useCallback(() => {
