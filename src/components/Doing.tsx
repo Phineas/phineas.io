@@ -25,6 +25,16 @@ type SocketEvent = {
   d: Presence | unknown;
 };
 
+const logLanyardEvent = (eventName: string, data: any) => {
+  // eslint-disable-next-line no-console
+  console.log(
+    `%cLanyard%c <~ ${eventName} %o`,
+    'background-color: #d7bb87; border-radius: 5px; padding: 3px; color: #372910;',
+    'background: none; color: #d7bb87;',
+    data
+  );
+};
+
 const discordId = "94490510688792576";
 
 const Doing = ({setActive, ...props}: {setActive: (active: boolean) => void} & any, ref: any) => {
@@ -44,6 +54,8 @@ const Doing = ({setActive, ...props}: {setActive: (active: boolean) => void} & a
         setInterval(() => send(Operation.Heartbeat), (d as { heartbeat_interval: number }).heartbeat_interval);
         send(Operation.Initialize, { subscribe_to_id: discordId });
       } else if (op === Operation.Event && t) {
+        logLanyardEvent(t, d);
+
         if ([EventType.INIT_STATE, EventType.PRESENCE_UPDATE].includes(t)) setDoing(d as Presence);
         setActive((d as Presence).listening_to_spotify)
       }
