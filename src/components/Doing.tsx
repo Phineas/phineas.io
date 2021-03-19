@@ -2,33 +2,60 @@ import { motion } from "framer-motion";
 import { forwardRef, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styled, { keyframes } from "styled-components";
+import { Presence } from '../types/lanyard';
 import SpotifyLogo from '../assets/images/spotify-logo.svg';
 
-// let progressInterval;
+// Thanks to Tim (https://github.com/timcole/timcole.me/blob/%F0%9F%A6%84/components/lanyard.tsx) for the types
+
+enum Operation {
+  Event,
+  Hello,
+  Initialize,
+  Heartbeat,
+}
+
+enum EventType {
+  INIT_STATE = 'INIT_STATE',
+  PRESENCE_UPDATE = 'PRESENCE_UPDATE',
+}
+
+type SocketEvent = {
+  op: Operation;
+  t?: EventType;
+  d: Presence | unknown;
+};
+
+const discordId = "94490510688792576";
 
 const Doing = ({setActive, ...props}: {setActive: (active: boolean) => void} & any, ref: any) => {
-  const [doing, setDoing] = useState<any | null>(null);
+  const [socket, setSocket] = useState<WebSocket | null>(null);
+  const [doing, setDoing] = useState<Presence>();
+  
+  const send = (op: Operation, d?: unknown): void => {
+    if (socket !== null) socket.send(JSON.stringify({ op, d }));
+  };
 
   useEffect(() => {
-    const queryLanyard = async () => {
-      const body = await fetch("https://api.lanyard.rest/v1/users/94490510688792576").then(res => res.json());
+    if (socket === null) return () => {};
+    socket.onmessage = function ({ data }: MessageEvent): void {
+      const { op, t, d }: SocketEvent = JSON.parse(data);
 
-      if(body.success) {
-        setDoing(body.data);
-
-       setActive(!!body.data.listening_to_spotify); 
+      if (op === Operation.Hello) {
+        setInterval(() => send(Operation.Heartbeat), (d as { heartbeat_interval: number }).heartbeat_interval);
+        send(Operation.Initialize, { subscribe_to_id: discordId });
+      } else if (op === Operation.Event && t) {
+        if ([EventType.INIT_STATE, EventType.PRESENCE_UPDATE].includes(t)) setDoing(d as Presence);
+        setActive((d as Presence).listening_to_spotify)
       }
-    }
-    
-    queryLanyard();
+    };
+  }, [socket]);
 
-    setInterval(() => {
-      queryLanyard();
-    }, 2500);
+  useEffect(() => {
+    if (socket !== null) return () => {};
+    setSocket(new WebSocket("wss://api.lanyard.rest/socket"));
   }, []);
 
-
-  if(!doing) return null;
+  if(!doing || !doing.listening_to_spotify) return null;
 
   return (
     <Container ref={ref} to={"/presence"} {...props}>

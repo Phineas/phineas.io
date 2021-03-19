@@ -24,7 +24,7 @@ const Co = ({
 
   return (
     <A href={url} target="_blank" rel="noopener">
-      <Container  onMouseMove={({ clientX: x, clientY: y }: {clientX: number, clientY: number}) => set({ xys: calc(x, y) })}
+      <Container onMouseMove={({ clientX: x, clientY: y }: {clientX: number, clientY: number}) => set({ xys: calc(x, y) })}
       onMouseLeave={() => set({ xys: [0, 0, 1] })}
       //@ts-ignore
       style={{ transform: props.xys.interpolate(trans) }}>
