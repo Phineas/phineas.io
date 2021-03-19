@@ -108,7 +108,7 @@ const Column = styled.div<{ forceWidth?: number; noBorder?: boolean }>`
   }
 `;
 
-const LanguageColorBlip = styled.div<{ color: string }>`
+const LanguageColorBlip = styled.span<{ color: string }>`
   display: inline-block;
   width: 10px;
   height: 10px;

@@ -143,7 +143,7 @@ if ('ontouchstart' in document.documentElement && window.DeviceOrientationEvent)
 }
 else {
   // Mouse move listener
-  console.log('Using mouse movement');
+  // console.log('Using mouse movement');
   document.body.addEventListener('mousemove', function(e) {
     //console.log('moved');
     mouse.x = e.clientX;

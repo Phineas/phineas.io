@@ -1,5 +1,5 @@
 import { motion, PanInfo } from "framer-motion";
-import { createRef, useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useHistory, useLocation } from "react-router";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
@@ -94,16 +94,16 @@ const Nav = () => {
             </IconButton> */}
           </Row> : null}
           <div ref={dragConstraintsRef}>
-            <Page active={pathname === "/"} to="/">
+            <Page active={pathname === "/" ? 1 : 0} to="/">
               what I do
             </Page>
-            <Page active={pathname === "/where"} to="/where">
+            <Page active={pathname === "/where" ? 1 : 0} to="/where">
               where I've done it
             </Page>
-            <Page active={pathname === "/how"} to="/how">
+            <Page active={pathname === "/how" ? 1 : 0} to="/how">
               how I do it
             </Page>
-            <Page active={pathname === "/etc"} to="/etc">
+            <Page active={pathname === "/etc" ? 1 : 0} to="/etc">
               more + contact
             </Page>
           </div>
@@ -198,7 +198,7 @@ const Title = styled.div`
   padding: 10px 0px;
 `;
 
-const Page = styled(Link)<{ active: boolean }>`
+const Page = styled(Link)<{ active: number }>`
   color: ${({ active }) => (active ? "#fff" : "#ccc")};
   padding: 10px 0px;
   display: flex;

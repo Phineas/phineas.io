@@ -41,7 +41,7 @@ export const ElixirLogo = (props: any) => (
     xmlns="http://www.w3.org/2000/svg"
     {...props}
   >
-    <g id="elixir" stroke="none" stroke-width="1" fill-rule="evenodd">
+    <g id="elixir" stroke="none" strokeWidth="1" fillRule="evenodd">
       <path
         d="M17.09765,1.5 C17.1497412,3.81765094 17.1152955,7.25457405 19.6828968,10.3853611 C22.2504981,13.5161481 25.497372,15.0920825 25.497372,19.9471981 C25.497372,26.2747555 20.7684736,29.5 16.6279496,29.5 C12.4874255,29.5 7.35194918,26.8152167 7.35194918,19.3300757 C7.35194918,15.1549422 9.36720832,9.90541524 13.054988,5.26198228 C14.2326866,3.77909413 15.6533698,2.19518803 17.09765,1.5 Z M11.3470908,26.4521125 C12.5331201,27.4321643 13.9984245,28.1077803 15.743004,28.4789605 C18.3598733,29.0357309 17.4057912,27.7081224 15.743004,27.1309646 C14.6344792,26.7461927 13.1691748,26.5199087 11.3470908,26.4521125 Z"
         id="Combined-Shape"
@@ -58,7 +58,7 @@ export const ReactLogo = (props: any) => (
     {...props}
   >
     <circle cx="0" cy="0" r="2.05" fill="#61dafb" />
-    <g stroke="#61dafb" stroke-width="1" fill="none">
+    <g stroke="#61dafb" strokeWidth="1" fill="none">
       <ellipse rx="11" ry="4.2" />
       <ellipse rx="11" ry="4.2" transform="rotate(60)" />
       <ellipse rx="11" ry="4.2" transform="rotate(120)" />
@@ -154,9 +154,9 @@ export const ChevronsRight = (props: any) => (
     viewBox="0 0 24 24"
     fill="none"
     stroke="currentColor"
-    stroke-width="2"
-    stroke-linecap="round"
-    stroke-linejoin="round"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
     {...props}
   >
     <polyline points="13 17 18 12 13 7"></polyline>
@@ -172,9 +172,9 @@ export const ExternalLinkIcon = (props: any) => (
     viewBox="0 0 24 24"
     fill="none"
     stroke="currentColor"
-    stroke-width="2"
-    stroke-linecap="round"
-    stroke-linejoin="round"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
     {...props}
   >
     <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
@@ -191,9 +191,9 @@ export const CompassIcon = (props: any) => (
     viewBox="0 0 24 24"
     fill="none"
     stroke="currentColor"
-    stroke-width="2"
-    stroke-linecap="round"
-    stroke-linejoin="round"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
     {...props}
   >
     <circle cx="12" cy="12" r="10"></circle>
@@ -209,9 +209,9 @@ export const MenuIcon = (props: any) => (
     viewBox="0 0 24 24"
     fill="none"
     stroke="currentColor"
-    stroke-width="2"
-    stroke-linecap="round"
-    stroke-linejoin="round"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
     {...props}
   >
     <line x1="3" y1="12" x2="21" y2="12"></line>
@@ -228,9 +228,9 @@ export const XIcon = (props: any) => (
     viewBox="0 0 24 24"
     fill="none"
     stroke="currentColor"
-    stroke-width="2"
-    stroke-linecap="round"
-    stroke-linejoin="round"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
     {...props}
   >
     <line x1="18" y1="6" x2="6" y2="18"></line>
