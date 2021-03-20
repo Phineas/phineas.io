@@ -47,6 +47,10 @@ const Doing = ({setActive, ...props}: {setActive: (active: boolean) => void} & a
 
   useEffect(() => {
     if (socket === null) return () => {};
+    setTimeout(() => {
+      send(1, null);
+    }, 5000);
+
     socket.onmessage = function ({ data }: MessageEvent): void {
       const { op, t, d }: SocketEvent = JSON.parse(data);
 
@@ -60,12 +64,15 @@ const Doing = ({setActive, ...props}: {setActive: (active: boolean) => void} & a
         setActive((d as Presence).listening_to_spotify)
       }
     };
+
+    socket.onclose = () => {
+      setSocket(null);
+    }
   }, [socket]);
 
   useEffect(() => {
-    if (socket !== null) return () => {};
-    setSocket(new WebSocket("wss://api.lanyard.rest/socket"));
-  }, []);
+    if(!socket) setSocket(new WebSocket("wss://api.lanyard.rest/socket"));
+  }, [socket]);
 
   if(!doing || !doing.listening_to_spotify) return null;
 
