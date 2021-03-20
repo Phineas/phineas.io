@@ -47,9 +47,6 @@ const Doing = ({setActive, ...props}: {setActive: (active: boolean) => void} & a
 
   useEffect(() => {
     if (socket === null) return () => {};
-    setTimeout(() => {
-      send(1, null);
-    }, 5000);
 
     socket.onmessage = function ({ data }: MessageEvent): void {
       const { op, t, d }: SocketEvent = JSON.parse(data);
