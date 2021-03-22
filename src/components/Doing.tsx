@@ -65,7 +65,6 @@ const Doing = (
 
         if ([EventType.INIT_STATE, EventType.PRESENCE_UPDATE].includes(t))
           setDoing(d as Presence);
-        setActive((d as Presence).listening_to_spotify);
       }
     };
 
@@ -79,19 +78,23 @@ const Doing = (
   }, [socket]);
 
   const currentActivity = useMemo(
-    () => doing?.activities.filter(activity => activity.type === 0)[0],
+    () => doing?.activities.filter((activity) => activity.type === 0)[0],
     [doing]
   );
+
+  useEffect(() => {
+    setActive(doing?.listening_to_spotify || currentActivity);
+  }, [doing, currentActivity])
 
   if (!doing || !doing?.discord_status) return null;
 
   return (
     <>
-      <Container ref={ref} to={"/presence"} {...props}>
-        <h5>
-          Listening to Spotify <LiveDot />
-        </h5>
-        {doing?.listening_to_spotify ? (
+      {doing?.listening_to_spotify ? (
+        <Container ref={ref} to={"/presence"} {...props}>
+          <h5>
+            Listening to Spotify <LiveDot />
+          </h5>
           <>
             <ActivityRow>
               <ActivityImageContainer>
@@ -105,8 +108,8 @@ const Doing = (
               </ActivityInfo>
             </ActivityRow>
           </>
-        ) : null}
-      </Container>
+        </Container>
+      ) : null}
       {currentActivity ? (
         <Container to={"/presence"} {...props}>
           <h5>Doing something</h5>
