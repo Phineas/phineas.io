@@ -79,7 +79,7 @@ const Doing = (
   }, [socket]);
 
   const currentActivity = useMemo(
-    () => doing?.activities[doing.activities.length - 1],
+    () => doing?.activities.filter(activity => activity.type === 0)[0],
     [doing]
   );
 
@@ -107,7 +107,7 @@ const Doing = (
           </>
         ) : null}
       </Container>
-      {currentActivity?.type === 0 ? (
+      {currentActivity ? (
         <Container to={"/presence"} {...props}>
           <h5>Doing something</h5>
           <ActivityRow>
