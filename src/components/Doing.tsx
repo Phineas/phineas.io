@@ -1,9 +1,9 @@
 import { motion } from "framer-motion";
-import { forwardRef, useEffect, useState } from "react";
+import { forwardRef, useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import styled, { keyframes } from "styled-components";
-import { Presence } from '../types/lanyard';
-import SpotifyLogo from '../assets/images/spotify-logo.svg';
+import { Presence } from "../types/lanyard";
+import SpotifyLogo from "../assets/images/spotify-logo.svg";
 
 // Thanks to Tim (https://github.com/timcole/timcole.me/blob/%F0%9F%A6%84/components/lanyard.tsx) for the types
 
@@ -15,8 +15,8 @@ enum Operation {
 }
 
 enum EventType {
-  INIT_STATE = 'INIT_STATE',
-  PRESENCE_UPDATE = 'PRESENCE_UPDATE',
+  INIT_STATE = "INIT_STATE",
+  PRESENCE_UPDATE = "PRESENCE_UPDATE",
 }
 
 type SocketEvent = {
@@ -29,18 +29,21 @@ const logLanyardEvent = (eventName: string, data: any) => {
   // eslint-disable-next-line no-console
   console.log(
     `%cLanyard%c <~ ${eventName} %o`,
-    'background-color: #d7bb87; border-radius: 5px; padding: 3px; color: #372910;',
-    'background: none; color: #d7bb87;',
+    "background-color: #d7bb87; border-radius: 5px; padding: 3px; color: #372910;",
+    "background: none; color: #d7bb87;",
     data
   );
 };
 
 const discordId = "94490510688792576";
 
-const Doing = ({setActive, ...props}: {setActive: (active: boolean) => void} & any, ref: any) => {
+const Doing = (
+  { setActive, ...props }: { setActive: (active: boolean) => void } & any,
+  ref: any
+) => {
   const [socket, setSocket] = useState<WebSocket | null>(null);
   const [doing, setDoing] = useState<Presence>();
-  
+
   const send = (op: Operation, d?: unknown): void => {
     if (socket !== null) socket.send(JSON.stringify({ op, d }));
   };
@@ -52,47 +55,85 @@ const Doing = ({setActive, ...props}: {setActive: (active: boolean) => void} & a
       const { op, t, d }: SocketEvent = JSON.parse(data);
 
       if (op === Operation.Hello) {
-        setInterval(() => send(Operation.Heartbeat), (d as { heartbeat_interval: number }).heartbeat_interval);
+        setInterval(
+          () => send(Operation.Heartbeat),
+          (d as { heartbeat_interval: number }).heartbeat_interval
+        );
         send(Operation.Initialize, { subscribe_to_id: discordId });
       } else if (op === Operation.Event && t) {
         logLanyardEvent(t, d);
 
-        if ([EventType.INIT_STATE, EventType.PRESENCE_UPDATE].includes(t)) setDoing(d as Presence);
-        setActive((d as Presence).listening_to_spotify)
+        if ([EventType.INIT_STATE, EventType.PRESENCE_UPDATE].includes(t))
+          setDoing(d as Presence);
+        setActive((d as Presence).listening_to_spotify);
       }
     };
 
     socket.onclose = () => {
       setSocket(null);
-    }
+    };
   }, [socket]);
 
   useEffect(() => {
-    if(!socket) setSocket(new WebSocket("wss://api.lanyard.rest/socket"));
+    if (!socket) setSocket(new WebSocket("wss://api.lanyard.rest/socket"));
   }, [socket]);
 
-  if(!doing || !doing.listening_to_spotify) return null;
+  const currentActivity = useMemo(
+    () => doing?.activities[doing.activities.length - 1],
+    [doing]
+  );
+
+  if (!doing || !doing?.discord_status) return null;
 
   return (
-    <Container ref={ref} to={"/presence"} {...props}>
-      <h5>Listening to Spotify <LiveDot/></h5>
-      {doing?.listening_to_spotify ? <>
-      <ActivityRow>
-        <ActivityImageContainer>
-          <ActivityImage src={doing.spotify.album_art_url} />
-          <ActivitySecondaryImage src={SpotifyLogo}/>
-        </ActivityImageContainer>
+    <>
+      <Container ref={ref} to={"/presence"} {...props}>
+        <h5>
+          Listening to Spotify <LiveDot />
+        </h5>
+        {doing?.listening_to_spotify ? (
+          <>
+            <ActivityRow>
+              <ActivityImageContainer>
+                <ActivityImage src={doing.spotify.album_art_url} />
+                <ActivitySecondaryImage src={SpotifyLogo} />
+              </ActivityImageContainer>
 
-        <ActivityInfo>
-          <h5>{doing.spotify.song}</h5>
-          <p>by {doing.spotify.artist}</p>
-        </ActivityInfo>
-      </ActivityRow>
-      {/* <Progress percentage={doing.spotify.timestamps.end}/> */}
-      </> : null}
-    </Container>
-  )
-}
+              <ActivityInfo>
+                <h5>{doing.spotify.song}</h5>
+                <p>by {doing.spotify.artist}</p>
+              </ActivityInfo>
+            </ActivityRow>
+          </>
+        ) : null}
+      </Container>
+      {currentActivity?.type === 0 ? (
+        <Container to={"/presence"} {...props}>
+          <h5>Doing something</h5>
+          <ActivityRow>
+            {currentActivity.assets ? (
+              <ActivityImageContainer>
+                <ActivityImage
+                  src={`https://cdn.discordapp.com/app-assets/${currentActivity.application_id}/${currentActivity.assets.large_image}.png`}
+                />
+                <ActivitySecondaryImage
+                  src={`https://cdn.discordapp.com/app-assets/${currentActivity.application_id}/${currentActivity.assets.small_image}.png`}
+                />
+              </ActivityImageContainer>
+            ) : null}
+            <ActivityInfo>
+              <h5>{currentActivity.name}</h5>
+              {currentActivity.details ? (
+                <p>{currentActivity.details}</p>
+              ) : null}
+              {currentActivity.state ? <p>{currentActivity.state}</p> : null}
+            </ActivityInfo>
+          </ActivityRow>
+        </Container>
+      ) : null}
+    </>
+  );
+};
 
 const Container = styled(motion(Link))`
   width: calc(100% + 2rem);
@@ -127,7 +168,6 @@ const fadeInOut = keyframes`
     opacity: 0%;
   }
 `;
-
 
 const LiveDot = styled.div`
   display: inline-block;
