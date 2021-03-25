@@ -18,7 +18,12 @@ const Home = () => {
         .
       </p>
 
-      <p>In my free time, I invest in and help startups with strategy, development, fundraising and more. Got a big descision to make? I'm always down to chat to new founders.</p>
+      <p>
+        In my free time, I work on various side-projects; I'm currently learning
+        Solidity and work on the Waifusion NFT project. I also invest in and
+        help startups with strategy, development, fundraising and more. Got a
+        big descision to make? I'm always down to chat to new founders.
+      </p>
 
       <h3>About Hiven</h3>
       <p>

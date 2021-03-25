@@ -1,6 +1,6 @@
 import PageWrapper from "./PageWrapper";
 import Technology from "../components/Technology";
-import { ElixirLogo, RabbitMQLogo, ReactLogo, RustLogo, TypescriptLogo } from "../components/Icons"
+import { ElixirLogo, RabbitMQLogo, ReactLogo, RustLogo, SolidityLogo, TypescriptLogo } from "../components/Icons"
 
 const How = () => {
   return (
@@ -59,6 +59,15 @@ const How = () => {
         type="Message queue"
         useCase={
           "Messaging between different services in a robust & durable way"
+        }
+      />
+      <Technology
+        color="#3c3c3d"
+        icon={<SolidityLogo />}
+        name="Solidity"
+        type="Web3"
+        useCase={
+          "Crafting integrous and reliable smart contracts governed by the Ethereum blockchain"
         }
       />
     </PageWrapper>
