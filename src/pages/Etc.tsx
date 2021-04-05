@@ -32,7 +32,7 @@ const Etc = () => (
       </li>
       <li>
         Primary ETH Address:{" "}
-        <code>0xd3AbB464df46568d1E72Fa5F156F05458f1AB26e</code>
+        <code>phin.eth (0xd3AbB464df46568d1E72Fa5F156F05458f1AB26e)</code>
       </li>
       <li>
         ETH Multisigs I'm a part of:{" "}
