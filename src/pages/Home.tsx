@@ -4,14 +4,10 @@ const Home = () => {
   return (
     <PageWrapper forceReadableWidth>
       <h1>What I Do</h1>
-      <p>19 y/o developer, innovator and investor.</p>
+      <p>Phin. 19 y/o developer, innovator and investor.</p>
       <p>
         I design, build and publish products of quality and reliability.
         Currently, I'm a co-founder and developer at{" "}
-        <a href="https://hiven.io" target="norel noopen">
-          Hiven
-        </a>{" "}
-        and{" "}
         <a href="https://giggl.app" target="norel noopen">
           Giggl
         </a>
@@ -19,18 +15,9 @@ const Home = () => {
       </p>
 
       <p>
-        In my free time, I work on various side-projects; I'm currently learning
-        Solidity and work on the Waifusion NFT project. I also invest in and
-        help startups with strategy, development, fundraising and more. Got a
-        big descision to make? I'm always down to chat to new founders.
-      </p>
-
-      <h3>About Hiven</h3>
-      <p>
-        At Hiven, we're making it super simple for anyone to create their own
-        premium, monetized community while also providing cutting-edge features
-        that you wouldn't find on other chat platforms - including end-to-end
-        encrypted chat, a built in wallet, advanced developer tools and more.
+        In my free time, I invest in and help startups with strategy,
+        development, fundraising and more. Got a big descision to make? I'm
+        always down to chat to new founders.
       </p>
 
       <h3>About Giggl</h3>
