@@ -39,7 +39,7 @@ const Where = () => {
           tagline="Consumer social"
           role={"Backend Engineer"}
           what={
-            "I designed and implemented the realtime infrastructure at Honk using Elixir."
+            "I helped design and implement the realtime infrastructure at Honk using Elixir."
           }
         />
       </CoWrapper>
