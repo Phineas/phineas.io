@@ -5,10 +5,14 @@ import HivenAppIcon from "../assets/images/hiven-app-icon.png";
 import GigglAppIcon from "../assets/images/giggl-app-icon.jpg";
 import HonkAppIcon from "../assets/images/honk-app-icon.jpg";
 import Repo from "../components/Repo";
+import { Helmet } from "react-helmet";
 
 const Where = () => {
   return (
     <PageWrapper>
+      <Helmet>
+        <title>Where</title>
+      </Helmet>
       <h1>Where I've Done It</h1>
       <h3>Companies</h3>
       <CoWrapper>

@@ -2,6 +2,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { KeyboardEvent, useCallback, useEffect, useState } from "react";
 import styled from "styled-components";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { Helmet } from "react-helmet";
 import SuccessiveType from "./components/SuccessiveType";
 import Nav from "./components/Nav";
 import Home from "./pages/Home";
@@ -9,18 +10,23 @@ import Where from "./pages/Where";
 import How from "./pages/How";
 import Etc from "./pages/Etc";
 import Presence from "./pages/Presence";
+import Sakurajima from "./pages/Sakurajima";
 import { ChevronsRight } from "./components/Icons";
 
+const shouldPlayIntro = window.location.pathname === "/";
+
 function App() {
-  const [introEnded, setIntroEnded] = useState(false);
+  const [introEnded, setIntroEnded] = useState(!shouldPlayIntro);
 
   const onKeyDown = (e: KeyboardEvent<HTMLDocument> & any) => {
-    if((e.keyCode === 9 || e.which === 9) && !introEnded) {
+    if ((e.keyCode === 9 || e.which === 9) && !introEnded) {
       e.preventDefault();
     }
   };
 
   useEffect(() => {
+    if (!shouldPlayIntro) return;
+
     const script = document.createElement("script");
 
     script.src = "/p-static/js/stars.js";
@@ -28,7 +34,7 @@ function App() {
 
     document.body.appendChild(script);
 
-    document.addEventListener('keydown', onKeyDown);
+    document.addEventListener("keydown", onKeyDown);
   }, []);
 
   const onIntroEnd = useCallback(() => {
@@ -38,22 +44,27 @@ function App() {
 
   return (
     <Wrapper>
-      <SuccessiveTypeContainer
-        transition={{ duration: 0.85 }}
-        animate={{ y: introEnded ? -window.innerHeight : 0 }}
-      >
-        <ProgressContainer onClick={onIntroEnd}>
-          <h4>Skip intro <ChevronsRight/></h4>
-        </ProgressContainer>
-        <SuccessiveType
-          onEnd={onIntroEnd}
-          words={
-            "Software was meant to feel light and effortless to use. As we're all developing new products so rapidly, bloat in our code is catching up with us. I design simple but effective, highly-scalable and realtime products for the future."
-          }
-          speed={1}
-          userSkipped={introEnded}
-        />
-      </SuccessiveTypeContainer>
+      <Helmet defaultTitle={"Phineas Walton"} titleTemplate={"%s • Phin"} />
+      {shouldPlayIntro ? (
+        <SuccessiveTypeContainer
+          transition={{ duration: 0.85 }}
+          animate={{ y: introEnded ? -window.innerHeight : 0 }}
+        >
+          <ProgressContainer onClick={onIntroEnd}>
+            <h4>
+              Skip intro <ChevronsRight />
+            </h4>
+          </ProgressContainer>
+          <SuccessiveType
+            onEnd={onIntroEnd}
+            words={
+              "Software was meant to feel light and effortless to use. As we're all developing new products so rapidly, bloat in our code is catching up with us. I design simple but effective, highly-scalable and realtime products for the future."
+            }
+            speed={1}
+            userSkipped={introEnded}
+          />
+        </SuccessiveTypeContainer>
+      ) : null}
 
       <motion.canvas
         transition={{ duration: 0.85 }}
@@ -77,6 +88,7 @@ function App() {
                 <Route exact path="/how" component={How} />
                 <Route exact path="/etc" component={Etc} />
                 <Route exact path="/presence" component={Presence} />
+                <Route exact path="/sakuraji.ma" component={Sakurajima} />
               </Switch>
             </AnimatePresence>
           </ContentWrapper>
@@ -133,7 +145,7 @@ const MainContent = styled(motion.div)`
   flex-direction: row;
   overflow-y: auto;
 
-  @media (max-width:850px) { 
+  @media (max-width: 850px) {
     flex-direction: column;
     /* padding-top: 65px; */
   }
@@ -152,7 +164,7 @@ const ContentWrapper = styled.div`
     }
   }
 
-  @media (max-width:850px)  { 
+  @media (max-width: 850px) {
     margin-left: 0px;
     padding-top: 65px;
   }

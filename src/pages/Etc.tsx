@@ -1,8 +1,12 @@
+import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 import PageWrapper from "./PageWrapper";
 
 const Etc = () => (
   <PageWrapper>
+    <Helmet>
+      <title>/etc</title>
+    </Helmet>
     <h1>/etc</h1>
     <h2>Thanks</h2>
     <p>
@@ -37,7 +41,15 @@ const Etc = () => (
       <li>
         ETH Multisigs I'm a part of:{" "}
         <ul>
-          <li><a href={"https://gnosis-safe.io/app/#/safes/0x354A70969F0b4a4C994403051A81C2ca45db3615"}>Waifusion Safe</a></li>
+          <li>
+            <a
+              href={
+                "https://gnosis-safe.io/app/#/safes/0x354A70969F0b4a4C994403051A81C2ca45db3615"
+              }
+            >
+              Waifusion Safe
+            </a>
+          </li>
         </ul>
       </li>
     </ul>

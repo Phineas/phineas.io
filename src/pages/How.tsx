@@ -1,10 +1,21 @@
 import PageWrapper from "./PageWrapper";
 import Technology from "../components/Technology";
-import { ElixirLogo, RabbitMQLogo, ReactLogo, RustLogo, SolidityLogo, TypescriptLogo } from "../components/Icons"
+import {
+  ElixirLogo,
+  RabbitMQLogo,
+  ReactLogo,
+  RustLogo,
+  SolidityLogo,
+  TypescriptLogo,
+} from "../components/Icons";
+import { Helmet } from "react-helmet";
 
 const How = () => {
   return (
     <PageWrapper>
+      <Helmet>
+        <title>How</title>
+      </Helmet>
       <h1>How I Do It</h1>
       <p>
         I highly leverage new bleeding-edge technologies and languages like
@@ -14,7 +25,7 @@ const How = () => {
 
       <Technology
         color="#9c1fa5"
-        icon={<ElixirLogo/>}
+        icon={<ElixirLogo />}
         name="Elixir"
         type="Realtime, Backend"
         useCase={
@@ -24,7 +35,7 @@ const How = () => {
 
       <Technology
         color="#232340"
-        icon={<ReactLogo/>}
+        icon={<ReactLogo />}
         name="React"
         type="Frontend framework"
         useCase={
@@ -34,7 +45,7 @@ const How = () => {
 
       <Technology
         color="#dea584"
-        icon={<RustLogo/>}
+        icon={<RustLogo />}
         name="Rust"
         type="Backend, System"
         useCase={
@@ -44,17 +55,15 @@ const How = () => {
 
       <Technology
         color="#007acc"
-        icon={<TypescriptLogo/>}
+        icon={<TypescriptLogo />}
         name="TypeScript"
         type="JS Framework"
-        useCase={
-          "Types for JS - will save your life when projects expand"
-        }
+        useCase={"Types for JS - will save your life when projects expand"}
       />
 
       <Technology
         color="#FF6600"
-        icon={<RabbitMQLogo/>}
+        icon={<RabbitMQLogo />}
         name="RabbitMQ"
         type="Message queue"
         useCase={
