@@ -21,6 +21,7 @@ const Sakurajima = () => (
 
 const MaiGifImg = styled.img`
   border-radius: 10px;
+  max-width: 100%;
 `;
 
 export default Sakurajima;
