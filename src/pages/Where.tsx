@@ -33,7 +33,7 @@ const Where = () => {
           tagline="Consumer social"
           role={"Co-founder & Developer"}
           what={
-            "I co-founded Giggl back in early 2020 to re-create being together IRL, online"
+            "I co-founded Giggl back in early 2020 to re-create being together IRL, online."
           }
         />
         <Co
@@ -53,25 +53,25 @@ const Where = () => {
         name={"Waifusion"}
         url={"https://github.com/waifusion"}
         primaryLanguage={"Multiple"}
-        description="Set of 16384 uniquely generated digital waifu NFT collectibles on the Ethereum blockchain"
+        description="Set of 16384 uniquely generated digital waifu NFT collectibles on the Ethereum blockchain."
       />
       <Repo
         name={"lanyard"}
         url={"https://github.com/phineas/lanyard"}
         primaryLanguage={"Elixir"}
-        description="Expose your Discord presence to an API in <10 seconds (used on this site)"
+        description="Expose your Discord presence to an API in <10 seconds (used on this very site)."
       />
       <Repo
         name={"node_compass"}
         url={"https://github.com/hivenapp/node_compass"}
         primaryLanguage={"Elixir"}
-        description="Automatic hash ring management for Elixir nodes"
+        description="Automatic hash ring management for Elixir nodes."
       />
       <Repo
         name={"phineas.io"}
         url={"https://github.com/phineas/phineas.io"}
         primaryLanguage={"TypeScript"}
-        description="This very website"
+        description="This very website."
       />
     </PageWrapper>
   );
