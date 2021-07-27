@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import PageWrapper from "./PageWrapper";
 
 const Etc = () => (
-  <PageWrapper>
+  <PageWrapper forceReadableWidth>
     <Helmet>
       <title>/etc</title>
     </Helmet>
@@ -21,6 +21,12 @@ const Etc = () => (
         click here
       </a>{" "}
       to DM me on Twitter.
+    </p>
+    <p>
+      If your inquiry is related to a network I manage or control (e.g.
+      AS399531), please send an email to my email listed on the respective WHOIS
+      contact. If it's an emergency, you can email{" "}
+      <a href="mailto:ops@sakuraji.ma">ops@sakuraji.ma</a>.
     </p>
     <h2>Other</h2>
     <ul>
