@@ -12,9 +12,18 @@ const Sakurajima = () => (
     <h1>sakuraji.ma</h1>
     <MaiGifImg draggable={false} src={Mai} />
     <p>
-      Looks like you've stumbled upon sakuraji.ma! I use this domain as a
-      catch-all email address for a few services. It's short for Mai{" "}
-      <b>Sakurajima</b>.
+      Looks like you've stumbled upon sakuraji.ma! I use this domain as rDNS for
+      the networks & IPs I control, and for few NOC/WHOIS management emails.
+      It's short for Mai <b>Sakurajima</b>.
+    </p>
+    <h2>Authoritative Delegation</h2>
+    <p>
+      The domains <b>rdns1.sakuraji.ma</b> and <b>rdns2.sakuraji.ma</b> act as
+      the authorative namservers for the following IP space:
+      <ul>
+        <li>172.110.130.0/24</li>
+        <li>2602:fc50::/36</li>
+      </ul>
     </p>
   </PageWrapper>
 );
