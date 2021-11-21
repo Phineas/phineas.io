@@ -28,6 +28,8 @@ const Repo = ({
                   ? "#9c1fa5"
                   : primaryLanguage === "TypeScript"
                   ? "#007acc"
+                  : primaryLanguage === "Rust"
+                  ? "#dea584"
                   : "#000"
               }
             />
@@ -90,7 +92,8 @@ const Column = styled.div<{ forceWidth?: number; noBorder?: boolean }>`
   @media (max-width: 850px) {
     height: 50px;
     width: 100%;
-    border-bottom: 1px solid ${({ noBorder }) => (noBorder ? "transparent" : "#101010")};
+    border-bottom: 1px solid
+      ${({ noBorder }) => (noBorder ? "transparent" : "#101010")};
     padding: 1rem;
     flex-shrink: 0;
     box-sizing: content-box;

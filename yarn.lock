@@ -5966,6 +5966,11 @@ jest@26.6.0:
     import-local "^3.0.2"
     jest-cli "^26.6.0"
 
+jotai@^1.4.4:
+  version "1.4.4"
+  resolved "https://registry.yarnpkg.com/jotai/-/jotai-1.4.4.tgz#bc62a7a5f45669f5d0a4d6dd438dadf029e8b65e"
+  integrity sha512-LTu++NYHBittzx8FXtzoSva/jTPXZ1I1HLVhINQ1Xe4FKhUqGCRTF+DZFN8a3C+Wq8zPOHRr8kvTGAupFD9SsA==
+
 "js-tokens@^3.0.0 || ^4.0.0", js-tokens@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/js-tokens/-/js-tokens-4.0.0.tgz#19203fb59991df98e3a287050d4647cdeaf32499"
@@ -8010,6 +8015,11 @@ react-app-polyfill@^2.0.0:
     raf "^3.4.1"
     regenerator-runtime "^0.13.7"
     whatwg-fetch "^3.4.1"
+
+react-content-loader@^6.0.3:
+  version "6.0.3"
+  resolved "https://registry.yarnpkg.com/react-content-loader/-/react-content-loader-6.0.3.tgz#32e28ca7120e0a2552fc26655d0d4448cc1fc0c5"
+  integrity sha512-CIRgTHze+ls+jGDIfCitw27YkW2XcaMpsYORTUdBxsMFiKuUYMnlvY76dZE4Lsaa9vFXVw+41ieBEK7SJt0nug==
 
 react-dev-utils@^11.0.3:
   version "11.0.4"

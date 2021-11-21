@@ -6,6 +6,7 @@ export interface Presence {
   discord_user: DiscordUser;
   discord_status: string;
   activities: Activity[];
+  kv: { [key: string]: string };
 }
 
 export interface Activity {

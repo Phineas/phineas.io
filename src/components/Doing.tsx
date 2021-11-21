@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import styled, { keyframes } from "styled-components";
 import { Presence } from "../types/lanyard";
 import SpotifyLogo from "../assets/images/spotify-logo.svg";
+import { useAtom } from "jotai";
+import { doingAtom } from "../state/lanyard";
 
 // Thanks to Tim (https://github.com/timcole/timcole.me/blob/%F0%9F%A6%84/components/lanyard.tsx) for the types
 
@@ -42,7 +44,7 @@ const Doing = (
   ref: any
 ) => {
   const [socket, setSocket] = useState<WebSocket | null>(null);
-  const [doing, setDoing] = useState<Presence>();
+  const [doing, setDoing] = useAtom(doingAtom);
 
   const send = (op: Operation, d?: unknown): void => {
     if (socket !== null) socket.send(JSON.stringify({ op, d }));
@@ -84,7 +86,7 @@ const Doing = (
 
   useEffect(() => {
     setActive(doing?.listening_to_spotify || currentActivity);
-  }, [doing, currentActivity])
+  }, [doing, currentActivity]);
 
   if (!doing || !doing?.discord_status) return null;
 

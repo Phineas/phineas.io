@@ -50,16 +50,22 @@ const Where = () => {
 
       <h3>Open-source Projects</h3>
       <Repo
-        name={"Waifusion"}
-        url={"https://github.com/waifusion"}
-        primaryLanguage={"Multiple"}
-        description="Set of 16384 uniquely generated digital waifu NFT collectibles on the Ethereum blockchain"
-      />
-      <Repo
         name={"lanyard"}
         url={"https://github.com/phineas/lanyard"}
         primaryLanguage={"Elixir"}
         description="Expose your Discord presence to an API in <10 seconds (used on this site)"
+      />
+      <Repo
+        name={"domain-lookup-tree"}
+        url={"https://github.com/phineas/domain-lookup-tree"}
+        primaryLanguage={"Rust"}
+        description="A tree structure in Rust optimized for looking up domain names, with wildcard support"
+      />
+      <Repo
+        name={"Waifusion"}
+        url={"https://github.com/waifusion"}
+        primaryLanguage={"Multiple"}
+        description="Set of 16384 uniquely generated digital waifu NFT collectibles on the Ethereum blockchain"
       />
       <Repo
         name={"node_compass"}

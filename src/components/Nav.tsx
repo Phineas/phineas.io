@@ -7,11 +7,15 @@ import {
   GitHubLogo,
   KeyIcon,
   MenuIcon,
+  NavigationIcon,
   TwitterLogo,
   XIcon,
 } from "./Icons";
 import Doing from "./Doing";
 import useSound from "use-sound";
+import { useAtom } from "jotai";
+import { doingAtom } from "../state/lanyard";
+import ContentLoader from "react-content-loader";
 
 const pathnameOffsets: { [key: string]: number } = {
   "/": 0,
@@ -30,20 +34,22 @@ const Nav = () => {
   const [openOnMobile, setOpenOnMobile] = useState(false);
   const [presenceActive, setPresenceActive] = useState(false);
 
+  const [doing] = useAtom(doingAtom);
+
   const dragConstraintsRef = useRef(null);
 
   useEffect(() => {
-    if(openOnMobile) setOpenOnMobile(false);
+    if (openOnMobile) setOpenOnMobile(false);
     playSwitchPageSound();
   }, [pathname]);
 
   const pageIndicatorOffset = useMemo(
-    () => (pathname ? pathnameOffsets[pathname] ?? -120 : 0),
+    () => (pathname ? pathnameOffsets[pathname] ?? -180 : 0),
     [pathname]
   );
 
   const pageIndicatorOffsetWithDecoration = useMemo(
-    () => 71 + pageIndicatorOffset - dragYOffset,
+    () => 71 + 33 + pageIndicatorOffset - dragYOffset,
     [pageIndicatorOffset, dragYOffset]
   );
 
@@ -67,32 +73,60 @@ const Nav = () => {
     [history, pageIndicatorOffset, dragYOffset, pathname]
   );
 
-  const toggleMobileMenu = useCallback(() => setOpenOnMobile(!openOnMobile), [
-    openOnMobile,
-  ]);
+  const toggleMobileMenu = useCallback(
+    () => setOpenOnMobile(!openOnMobile),
+    [openOnMobile]
+  );
 
   return (
     <>
       <MobileHeader>
         <Title>Phineas Walton</Title>
-        {openOnMobile ? <XIcon onClick={toggleMobileMenu} /> : <MenuIcon onClick={toggleMobileMenu} />}
+        {openOnMobile ? (
+          <XIcon onClick={toggleMobileMenu} />
+        ) : (
+          <MenuIcon onClick={toggleMobileMenu} />
+        )}
       </MobileHeader>
       <Container openOnMobile={openOnMobile}>
-        {!openOnMobile ? <PageIndicator
-          whileHover={{ width: 3 }}
-          drag="y"
-          onDragEnd={onPageIndicatorDragEnd}
-          dragConstraints={dragConstraintsRef}
-          animate={{ top: pageIndicatorOffsetWithDecoration }}
-        /> : null}
+        {!openOnMobile ? (
+          <PageIndicator
+            whileHover={{ width: 3 }}
+            drag="y"
+            onDragEnd={onPageIndicatorDragEnd}
+            dragConstraints={dragConstraintsRef}
+            animate={{ top: pageIndicatorOffsetWithDecoration }}
+          />
+        ) : null}
         <Items>
-          {!openOnMobile ?
-          <Row>
-            <Title>Phineas Walton</Title>
-            {/* <IconButton>
+          {!openOnMobile ? (
+            <Row>
+              <Title>Phineas Walton</Title>
+              {/* <IconButton>
               <ChevronDown />
             </IconButton> */}
-          </Row> : null}
+            </Row>
+          ) : null}
+          <Row>
+            <Location>
+              <NavigationIcon />
+              {doing?.kv.location ? (
+                doing.kv.location
+              ) : (
+                <ContentLoader
+                  speed={2}
+                  // width={"auto"}
+                  height={19}
+                  viewBox="0 0 160 25"
+                  backgroundColor="#121212"
+                  foregroundColor="#2e2e2e"
+                >
+                  <rect x="0" y="3" rx="6" ry="6" width="160" height="19" />
+                </ContentLoader>
+              )}
+            </Location>
+          </Row>
+
           <div ref={dragConstraintsRef}>
             <Page active={pathname === "/" ? 1 : 0} to="/">
               what I do
@@ -109,11 +143,20 @@ const Nav = () => {
           </div>
 
           <Icons>
-            <a href="https://twitter.com/phineyes"><TwitterLogo /></a>
-            <a href="https://github.com/phineas"><GitHubLogo /></a>
-            <a href="https://keybase.io/phineas"><KeyIcon /></a>
+            <a href="https://twitter.com/phineyes">
+              <TwitterLogo />
+            </a>
+            <a href="https://github.com/phineas">
+              <GitHubLogo />
+            </a>
+            <a href="https://keybase.io/phineas">
+              <KeyIcon />
+            </a>
           </Icons>
-          <Doing style={{display: presenceActive ? 'block' : 'none'}} setActive={setPresenceActive} />
+          <Doing
+            style={{ display: presenceActive ? "block" : "none" }}
+            setActive={setPresenceActive}
+          />
         </Items>
       </Container>
     </>
@@ -133,7 +176,7 @@ const Container = styled.aside<{ openOnMobile: boolean }>`
   height: 100vh;
 
   @media (max-width: 850px) {
-    display: ${({openOnMobile}) => openOnMobile ? 'block' : 'none'};
+    display: ${({ openOnMobile }) => (openOnMobile ? "block" : "none")};
     background-color: rgba(0, 0, 0, 0.8);
     backdrop-filter: blur(7px);
     z-index: 1;
@@ -147,7 +190,7 @@ const MobileHeader = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  position: fixed ;
+  position: fixed;
   top: 0;
   display: flex;
   padding: 2rem;
@@ -196,6 +239,24 @@ const Row = styled.div`
 const Title = styled.div`
   font-weight: 600;
   padding: 10px 0px;
+`;
+
+const Location = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  height: 19px;
+  font-size: 14px;
+  margin-bottom: 15px;
+  user-select: none;
+
+  svg:first-child {
+    height: 18px;
+    width: 18px;
+    margin-right: 10px;
+    color: #ff65b2;
+  }
 `;
 
 const Page = styled(Link)<{ active: number }>`
