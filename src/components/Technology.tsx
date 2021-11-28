@@ -1,5 +1,5 @@
-import { ReactElement } from "react";
-import styled from "styled-components";
+import { ReactElement } from 'react';
+import styled from 'styled-components';
 
 const Technology = ({
   color,
@@ -78,29 +78,27 @@ const Head = styled.div<{ color: string }>`
 const Column = styled.div<{ forceWidth?: number; noBorder?: boolean }>`
   display: block;
   height: 100%;
-  width: ${({ forceWidth }) =>
-    forceWidth ? forceWidth + "px" : "fit-content"};
-  min-width: ${({ forceWidth }) => forceWidth ? forceWidth + 'px' : undefined};
+  width: ${({ forceWidth }) => (forceWidth ? forceWidth + 'px' : 'fit-content')};
+  min-width: ${({ forceWidth }) => (forceWidth ? forceWidth + 'px' : undefined)};
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-right: 1px solid
-    ${({ noBorder }) => (noBorder ? "transparent" : "#101010")};
+  border-right: 1px solid ${({ noBorder }) => (noBorder ? 'transparent' : '#101010')};
   padding: 1rem;
   box-sizing: border-box;
-  flex-shrink: ${({noBorder}) => noBorder ? undefined : 0};
+  flex-shrink: ${({ noBorder }) => (noBorder ? undefined : 0)};
 
   @media (max-width: 850px) {
     height: 50px;
     width: 100%;
-    border-bottom: 1px solid ${({ noBorder }) => (noBorder ? "transparent" : "#101010")};
+    border-bottom: 1px solid ${({ noBorder }) => (noBorder ? 'transparent' : '#101010')};
     padding: 1rem;
     flex-shrink: 0;
     box-sizing: content-box;
   }
 
   h5 {
-    font-family: "Courier New";
+    font-family: 'Courier New';
     margin: 0;
     color: #fff;
   }

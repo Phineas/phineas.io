@@ -52,11 +52,7 @@ export const ElixirLogo = (props: any) => (
 );
 
 export const ReactLogo = (props: any) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="-11.5 -10.23174 23 20.46348"
-    {...props}
-  >
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="-11.5 -10.23174 23 20.46348" {...props}>
     <circle cx="0" cy="0" r="2.05" fill="#61dafb" />
     <g stroke="#61dafb" strokeWidth="1" fill="none">
       <ellipse rx="11" ry="4.2" />
@@ -122,19 +118,10 @@ export const SolidityLogo = (props: any) => (
   >
     <path d="M391.93 0L261.226 232.302H0L130.614 0H391.93" opacity=".45" />
     <path d="M261.226 232.302h261.318L391.93 0H130.614z" opacity=".6" />
-    <path
-      d="M130.614 464.514l130.612-232.212L130.614 0 0 232.302z"
-      opacity=".8"
-    />
-    <path
-      d="M131.879 812.967l130.704-232.303h261.318L393.196 812.967H131.879"
-      opacity=".45"
-    />
+    <path d="M130.614 464.514l130.612-232.212L130.614 0 0 232.302z" opacity=".8" />
+    <path d="M131.879 812.967l130.704-232.303h261.318L393.196 812.967H131.879" opacity=".45" />
     <path d="M262.582 580.665H1.265l130.613 232.303h261.317z" opacity=".6" />
-    <path
-      d="M393.196 348.453L262.582 580.665l130.614 232.303L523.9 580.665z"
-      opacity=".8"
-    />
+    <path d="M393.196 348.453L262.582 580.665l130.614 232.303L523.9 580.665z" opacity=".8" />
   </svg>
 );
 

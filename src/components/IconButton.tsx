@@ -1,11 +1,7 @@
-import { ReactElement } from "react";
-import styled from "styled-components";
+import { ReactElement } from 'react';
+import styled from 'styled-components';
 
-const IconButton = ({children}: {children: ReactElement}) => (
-  <Container>
-    {children}
-  </Container>
-)
+const IconButton = ({ children }: { children: ReactElement }) => <Container>{children}</Container>;
 
 const Container = styled.button`
   display: flex;

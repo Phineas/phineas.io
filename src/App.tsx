@@ -1,19 +1,19 @@
-import { AnimatePresence, motion } from "framer-motion";
-import { KeyboardEvent, useCallback, useEffect, useState } from "react";
-import styled from "styled-components";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { Helmet } from "react-helmet";
-import SuccessiveType from "./components/SuccessiveType";
-import Nav from "./components/Nav";
-import Home from "./pages/Home";
-import Where from "./pages/Where";
-import How from "./pages/How";
-import Etc from "./pages/Etc";
-import Presence from "./pages/Presence";
-import Sakurajima from "./pages/Sakurajima";
-import { ChevronsRight } from "./components/Icons";
+import { AnimatePresence, motion } from 'framer-motion';
+import { KeyboardEvent, useCallback, useEffect, useState } from 'react';
+import styled from 'styled-components';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
+import SuccessiveType from './components/SuccessiveType';
+import Nav from './components/Nav';
+import Home from './pages/Home';
+import Where from './pages/Where';
+import How from './pages/How';
+import Etc from './pages/Etc';
+import Presence from './pages/Presence';
+import Sakurajima from './pages/Sakurajima';
+import { ChevronsRight } from './components/Icons';
 
-const shouldPlayIntro = window.location.pathname === "/";
+const shouldPlayIntro = window.location.pathname === '/';
 
 function App() {
   const [introEnded, setIntroEnded] = useState(!shouldPlayIntro);
@@ -27,24 +27,24 @@ function App() {
   useEffect(() => {
     if (!shouldPlayIntro) return;
 
-    const script = document.createElement("script");
+    const script = document.createElement('script');
 
-    script.src = "/p-static/js/stars.js";
+    script.src = '/p-static/js/stars.js';
     script.async = true;
 
     document.body.appendChild(script);
 
-    document.addEventListener("keydown", onKeyDown);
+    document.addEventListener('keydown', onKeyDown);
   }, []);
 
   const onIntroEnd = useCallback(() => {
-    localStorage.setItem("v1:intro-completed", "true");
+    localStorage.setItem('v1:intro-completed', 'true');
     setIntroEnded(true);
   }, []);
 
   return (
     <Wrapper>
-      <Helmet defaultTitle={"Phineas Walton"} titleTemplate={"%s • Phin"} />
+      <Helmet defaultTitle={'Phineas Walton'} titleTemplate={'%s • Phin'} />
       {shouldPlayIntro ? (
         <SuccessiveTypeContainer
           transition={{ duration: 0.85 }}
