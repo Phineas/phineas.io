@@ -1,10 +1,14 @@
-import { motion } from "framer-motion";
-import styled from "styled-components";
+import { motion } from 'framer-motion';
+import styled from 'styled-components';
 
-const Progress = ({percentage}: {percentage: number}) => {
+const Progress = ({ percentage }: { percentage: number }) => {
   return (
     <Container>
-      <ProgressFill initial={false} transition={{ ease: "easeOut", duration: 2 }} animate={{x: `${percentage - 100}%`}} />
+      <ProgressFill
+        initial={false}
+        transition={{ ease: 'easeOut', duration: 2 }}
+        animate={{ x: `${percentage - 100}%` }}
+      />
     </Container>
   );
 };

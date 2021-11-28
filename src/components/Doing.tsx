@@ -1,11 +1,11 @@
-import { motion } from "framer-motion";
-import { forwardRef, useEffect, useMemo, useState } from "react";
-import { Link } from "react-router-dom";
-import styled, { keyframes } from "styled-components";
-import { Presence } from "../types/lanyard";
-import SpotifyLogo from "../assets/images/spotify-logo.svg";
-import { useAtom } from "jotai";
-import { doingAtom } from "../state/lanyard";
+import { motion } from 'framer-motion';
+import { forwardRef, useEffect, useMemo, useState } from 'react';
+import { Link } from 'react-router-dom';
+import styled, { keyframes } from 'styled-components';
+import { Presence } from '../types/lanyard';
+import SpotifyLogo from '../assets/images/spotify-logo.svg';
+import { useAtom } from 'jotai';
+import { doingAtom } from '../state/lanyard';
 
 // Thanks to Tim (https://github.com/timcole/timcole.me/blob/%F0%9F%A6%84/components/lanyard.tsx) for the types
 
@@ -17,8 +17,8 @@ enum Operation {
 }
 
 enum EventType {
-  INIT_STATE = "INIT_STATE",
-  PRESENCE_UPDATE = "PRESENCE_UPDATE",
+  INIT_STATE = 'INIT_STATE',
+  PRESENCE_UPDATE = 'PRESENCE_UPDATE',
 }
 
 type SocketEvent = {
@@ -31,13 +31,13 @@ const logLanyardEvent = (eventName: string, data: any) => {
   // eslint-disable-next-line no-console
   console.log(
     `%cLanyard%c <~ ${eventName} %o`,
-    "background-color: #d7bb87; border-radius: 5px; padding: 3px; color: #372910;",
-    "background: none; color: #d7bb87;",
+    'background-color: #d7bb87; border-radius: 5px; padding: 3px; color: #372910;',
+    'background: none; color: #d7bb87;',
     data
   );
 };
 
-const discordId = "94490510688792576";
+const discordId = '94490510688792576';
 
 const Doing = (
   { setActive, ...props }: { setActive: (active: boolean) => void } & any,
@@ -65,8 +65,7 @@ const Doing = (
       } else if (op === Operation.Event && t) {
         logLanyardEvent(t, d);
 
-        if ([EventType.INIT_STATE, EventType.PRESENCE_UPDATE].includes(t))
-          setDoing(d as Presence);
+        if ([EventType.INIT_STATE, EventType.PRESENCE_UPDATE].includes(t)) setDoing(d as Presence);
       }
     };
 
@@ -76,7 +75,7 @@ const Doing = (
   }, [socket]);
 
   useEffect(() => {
-    if (!socket) setSocket(new WebSocket("wss://api.lanyard.rest/socket"));
+    if (!socket) setSocket(new WebSocket('wss://api.lanyard.rest/socket'));
   }, [socket]);
 
   const currentActivity = useMemo(
@@ -93,7 +92,7 @@ const Doing = (
   return (
     <>
       {doing?.listening_to_spotify ? (
-        <Container ref={ref} to={"/presence"} {...props}>
+        <Container ref={ref} to={'/presence'} {...props}>
           <h5>
             Listening to Spotify <LiveDot />
           </h5>
@@ -113,7 +112,7 @@ const Doing = (
         </Container>
       ) : null}
       {currentActivity ? (
-        <Container to={"/presence"} {...props}>
+        <Container to={'/presence'} {...props}>
           <h5>Doing something</h5>
           <ActivityRow>
             {currentActivity.assets ? (
@@ -128,9 +127,7 @@ const Doing = (
             ) : null}
             <ActivityInfo>
               <h5>{currentActivity.name}</h5>
-              {currentActivity.details ? (
-                <p>{currentActivity.details}</p>
-              ) : null}
+              {currentActivity.details ? <p>{currentActivity.details}</p> : null}
               {currentActivity.state ? <p>{currentActivity.state}</p> : null}
             </ActivityInfo>
           </ActivityRow>

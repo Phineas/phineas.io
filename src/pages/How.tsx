@@ -1,5 +1,5 @@
-import PageWrapper from "./PageWrapper";
-import Technology from "../components/Technology";
+import PageWrapper from './PageWrapper';
+import Technology from '../components/Technology';
 import {
   ElixirLogo,
   RabbitMQLogo,
@@ -7,8 +7,8 @@ import {
   RustLogo,
   SolidityLogo,
   TypescriptLogo,
-} from "../components/Icons";
-import { Helmet } from "react-helmet";
+} from '../components/Icons';
+import { Helmet } from 'react-helmet';
 
 const How = () => {
   return (
@@ -18,9 +18,8 @@ const How = () => {
       </Helmet>
       <h1>How I Do It</h1>
       <p>
-        I highly leverage new bleeding-edge technologies and languages like
-        Elixir to stay on top of the game. You can find a list of my most-used
-        technologies below.
+        I highly leverage new bleeding-edge technologies and languages like Elixir to stay on top of
+        the game. You can find a list of my most-used technologies below.
       </p>
 
       <Technology
@@ -28,9 +27,7 @@ const How = () => {
         icon={<ElixirLogo />}
         name="Elixir"
         type="Realtime, Backend"
-        useCase={
-          "Building fault-tolerant realtime systems that scale out across multiple nodes"
-        }
+        useCase={'Building fault-tolerant realtime systems that scale out across multiple nodes'}
       />
 
       <Technology
@@ -38,9 +35,7 @@ const How = () => {
         icon={<ReactLogo />}
         name="React"
         type="Frontend framework"
-        useCase={
-          "Constructing stateful and durable frontends for large and interactive web apps"
-        }
+        useCase={'Constructing stateful and durable frontends for large and interactive web apps'}
       />
 
       <Technology
@@ -49,7 +44,7 @@ const How = () => {
         name="Rust"
         type="Backend, System"
         useCase={
-          "Optimizing parts of Elixir code using Rust NIFs and writing efficient system code"
+          'Optimizing parts of Elixir code using Rust NIFs and writing efficient system code'
         }
       />
 
@@ -58,7 +53,7 @@ const How = () => {
         icon={<TypescriptLogo />}
         name="TypeScript"
         type="JS Framework"
-        useCase={"Types for JS - will save your life when projects expand"}
+        useCase={'Types for JS - will save your life when projects expand'}
       />
 
       <Technology
@@ -66,9 +61,7 @@ const How = () => {
         icon={<RabbitMQLogo />}
         name="RabbitMQ"
         type="Message queue"
-        useCase={
-          "Messaging between different services in a robust & durable way"
-        }
+        useCase={'Messaging between different services in a robust & durable way'}
       />
       <Technology
         color="#3c3c3d"
@@ -76,7 +69,7 @@ const How = () => {
         name="Solidity"
         type="Web3"
         useCase={
-          "Crafting integrous and reliable smart contracts governed by the Ethereum blockchain"
+          'Crafting integrous and reliable smart contracts governed by the Ethereum blockchain'
         }
       />
     </PageWrapper>

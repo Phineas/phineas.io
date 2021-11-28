@@ -1,34 +1,27 @@
-import { motion, PanInfo } from "framer-motion";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { useHistory, useLocation } from "react-router";
-import { Link } from "react-router-dom";
-import styled from "styled-components";
-import {
-  GitHubLogo,
-  KeyIcon,
-  MenuIcon,
-  NavigationIcon,
-  TwitterLogo,
-  XIcon,
-} from "./Icons";
-import Doing from "./Doing";
-import useSound from "use-sound";
-import { useAtom } from "jotai";
-import { doingAtom } from "../state/lanyard";
-import ContentLoader from "react-content-loader";
+import { motion, PanInfo } from 'framer-motion';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useHistory, useLocation } from 'react-router';
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+import { GitHubLogo, KeyIcon, MenuIcon, NavigationIcon, TwitterLogo, XIcon } from './Icons';
+import Doing from './Doing';
+import useSound from 'use-sound';
+import { useAtom } from 'jotai';
+import { doingAtom } from '../state/lanyard';
+import ContentLoader from 'react-content-loader';
 
 const pathnameOffsets: { [key: string]: number } = {
-  "/": 0,
-  "/where": 39,
-  "/how": 78,
-  "/etc": 117,
+  '/': 0,
+  '/where': 39,
+  '/how': 78,
+  '/etc': 117,
 };
 
 const Nav = () => {
   const history = useHistory();
   const { pathname } = useLocation();
 
-  const [playSwitchPageSound] = useSound("/p-static/sounds/switch-page.mp3");
+  const [playSwitchPageSound] = useSound('/p-static/sounds/switch-page.mp3');
 
   const [dragYOffset, setDragYOffset] = useState(0);
   const [openOnMobile, setOpenOnMobile] = useState(false);
@@ -73,10 +66,7 @@ const Nav = () => {
     [history, pageIndicatorOffset, dragYOffset, pathname]
   );
 
-  const toggleMobileMenu = useCallback(
-    () => setOpenOnMobile(!openOnMobile),
-    [openOnMobile]
-  );
+  const toggleMobileMenu = useCallback(() => setOpenOnMobile(!openOnMobile), [openOnMobile]);
 
   return (
     <>
@@ -108,7 +98,11 @@ const Nav = () => {
             </Row>
           ) : null}
           <Row>
-            <Location>
+            <Location
+              target="_blank"
+              href={doing ? `https://search.alistair.sh/?q=!maps+${doing.kv.location}` : undefined}
+              rel="noreferrer"
+            >
               <NavigationIcon />
               {doing?.kv.location ? (
                 doing.kv.location
@@ -128,16 +122,16 @@ const Nav = () => {
           </Row>
 
           <div ref={dragConstraintsRef}>
-            <Page active={pathname === "/" ? 1 : 0} to="/">
+            <Page active={pathname === '/' ? 1 : 0} to="/">
               what I do
             </Page>
-            <Page active={pathname === "/where" ? 1 : 0} to="/where">
+            <Page active={pathname === '/where' ? 1 : 0} to="/where">
               where I've done it
             </Page>
-            <Page active={pathname === "/how" ? 1 : 0} to="/how">
+            <Page active={pathname === '/how' ? 1 : 0} to="/how">
               how I do it
             </Page>
-            <Page active={pathname === "/etc" ? 1 : 0} to="/etc">
+            <Page active={pathname === '/etc' ? 1 : 0} to="/etc">
               more + contact
             </Page>
           </div>
@@ -154,7 +148,7 @@ const Nav = () => {
             </a>
           </Icons>
           <Doing
-            style={{ display: presenceActive ? "block" : "none" }}
+            style={{ display: presenceActive ? 'block' : 'none' }}
             setActive={setPresenceActive}
           />
         </Items>
@@ -176,7 +170,7 @@ const Container = styled.aside<{ openOnMobile: boolean }>`
   height: 100vh;
 
   @media (max-width: 850px) {
-    display: ${({ openOnMobile }) => (openOnMobile ? "block" : "none")};
+    display: ${({ openOnMobile }) => (openOnMobile ? 'block' : 'none')};
     background-color: rgba(0, 0, 0, 0.8);
     backdrop-filter: blur(7px);
     z-index: 1;
@@ -241,7 +235,7 @@ const Title = styled.div`
   padding: 10px 0px;
 `;
 
-const Location = styled.div`
+const Location = styled.a`
   width: 100%;
   display: flex;
   align-items: center;
@@ -250,6 +244,12 @@ const Location = styled.div`
   font-size: 14px;
   margin-bottom: 15px;
   user-select: none;
+
+  color: white;
+
+  &:hover {
+    color: rgba(255, 255, 255, 0.8);
+  }
 
   svg:first-child {
     height: 18px;
@@ -260,7 +260,7 @@ const Location = styled.div`
 `;
 
 const Page = styled(Link)<{ active: number }>`
-  color: ${({ active }) => (active ? "#fff" : "#ccc")};
+  color: ${({ active }) => (active ? '#fff' : '#ccc')};
   padding: 10px 0px;
   display: flex;
 
