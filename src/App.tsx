@@ -58,7 +58,7 @@ function App() {
           <SuccessiveType
             onEnd={onIntroEnd}
             words={
-              "Software was meant to feel light and effortless to use. As we're all developing new products so rapidly, bloat in our code is catching up with us. I design simple but effective, highly-scalable and realtime products for the future."
+              "Software was meant to be light and feel effortless to use. As we're all developing new products so rapidly, bloat in our code is catching up with us. I design simple but effective, highly-scalable and realtime products for the future."
             }
             speed={1}
             userSkipped={introEnded}
