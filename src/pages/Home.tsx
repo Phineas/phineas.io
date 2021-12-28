@@ -1,10 +1,23 @@
+import { useMemo } from 'react';
+import { Tooltip } from 'react-tippy';
 import PageWrapper from './PageWrapper';
 
+const BIRTH = new Date('2001-12-28T10:15:00Z');
+const YEAR_MILLIS = 31556952000;
+
 const Home = () => {
+  const age = useMemo(() => Math.floor((Date.now() - BIRTH.getTime()) / YEAR_MILLIS), []);
+
   return (
     <PageWrapper forceReadableWidth>
       <h1>What I Do</h1>
-      <p>Phin. 19 y/o developer, innovator and investor.</p>
+      <p>
+        Phin.{' '}
+        <Tooltip arrow title={'28th December 2001'}>
+          {age}
+        </Tooltip>{' '}
+        y/o developer, innovator and investor.
+      </p>
       <p>
         I design, build and publish products of quality and reliability. Currently, I'm a co-founder
         and developer at{' '}
