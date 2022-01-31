@@ -17,7 +17,7 @@ const Sakurajima = () => (
     </p>
     <h2>Authoritative Delegation</h2>
     <p>
-      The domains <b>rdns1.sakuraji.ma</b> and <b>rdns2.sakuraji.ma</b> act as the authorative
+      The domains <b>kaede.sakuraji.ma</b> and <b>shoko.sakuraji.ma</b> act as the authorative
       nameservers for the following IP space:
       <ul>
         <li>172.110.130.0/24</li>

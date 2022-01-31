@@ -38,18 +38,6 @@ const Etc = () => (
       <li>
         Primary ETH Address: <code>phin.eth (0xd3AbB464df46568d1E72Fa5F156F05458f1AB26e)</code>
       </li>
-      <li>
-        ETH Multisigs I'm a part of:{' '}
-        <ul>
-          <li>
-            <a
-              href={'https://gnosis-safe.io/app/#/safes/0x354A70969F0b4a4C994403051A81C2ca45db3615'}
-            >
-              Waifusion Safe
-            </a>
-          </li>
-        </ul>
-      </li>
     </ul>
   </PageWrapper>
 );

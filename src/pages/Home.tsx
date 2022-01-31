@@ -26,10 +26,24 @@ const Home = () => {
         </a>
         .
       </p>
+      <p>
+        I specialize in scalable real-time systems & networking, then usually pair that with React
+        for the frontend.
+      </p>
 
       <p>
         In my free time, I invest in and help startups with strategy, development, fundraising and
         more. Got a big descision to make? I'm always down to chat to new founders.
+      </p>
+
+      <h3>A note about networking</h3>
+
+      <p>
+        Network engineering sounds like a mundane and boring topic, but it's actually pretty
+        esoteric and interesting when applied on a global scale - it's the backbone of how today's
+        society communicates and operates, yet there's not many young developers engaged in the
+        topic. Contrary to popular belief, the internet still works and operates on very loose trust
+        between people and organizations - I plan to help change this for the better.
       </p>
 
       <h3>About Giggl</h3>

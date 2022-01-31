@@ -56,12 +56,6 @@ const Where = () => {
         description="A tree structure in Rust optimized for looking up domain names, with wildcard support"
       />
       <Repo
-        name={'Waifusion'}
-        url={'https://github.com/waifusion'}
-        primaryLanguage={'Multiple'}
-        description="Set of 16384 uniquely generated digital waifu NFT collectibles on the Ethereum blockchain"
-      />
-      <Repo
         name={'node_compass'}
         url={'https://github.com/hivenapp/node_compass'}
         primaryLanguage={'Elixir'}
@@ -72,6 +66,12 @@ const Where = () => {
         url={'https://github.com/phineas/phineas.io'}
         primaryLanguage={'TypeScript'}
         description="This very website"
+      />
+      <Repo
+        name={'Waifusion'}
+        url={'https://github.com/waifusion'}
+        primaryLanguage={'Multiple'}
+        description="Set of 16384 uniquely generated digital waifu NFT collectibles on the Ethereum blockchain"
       />
     </PageWrapper>
   );
