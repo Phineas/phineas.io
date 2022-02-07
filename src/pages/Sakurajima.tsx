@@ -21,6 +21,7 @@ const Sakurajima = () => (
       nameservers for the following IP space:
       <ul>
         <li>172.110.130.0/24</li>
+        <li>162.218.156.0/24</li>
         <li>2602:fc50::/36</li>
       </ul>
     </p>

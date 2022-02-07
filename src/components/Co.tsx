@@ -17,6 +17,7 @@ const Co = ({
   tagline,
   role,
   what,
+  acquired,
 }: {
   url: string;
   name: string;
@@ -24,6 +25,7 @@ const Co = ({
   tagline: string;
   role: string;
   what: string;
+  acquired?: boolean;
 }) => {
   const [props, set] = useSpring(() => ({
     xys: [0, 0, 1],
@@ -43,6 +45,7 @@ const Co = ({
         <Header>
           <img alt={`${name} Logo`} draggable={false} src={iconReference} />
           <div>
+            {acquired ? <sub>acquired</sub> : null}
             <h3>
               {name} <ExternalLinkIcon />
             </h3>
@@ -98,6 +101,12 @@ const Header = styled.div`
   }
 
   div {
+    sub {
+      text-transform: uppercase;
+      color: #ff65b2;
+      letter-spacing: 2px;
+    }
+
     h3 {
       margin: 0;
     }

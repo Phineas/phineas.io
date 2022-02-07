@@ -23,6 +23,7 @@ const Where = () => {
           tagline="Consumer social"
           role={'Founder & Developer'}
           what={'I founded Hiven back in 2019 to make it easy for anyone create premium groups.'}
+          acquired
         />
         <Co
           url="https://giggl.app"
