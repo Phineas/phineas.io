@@ -44,7 +44,7 @@ function App() {
 
   return (
     <Wrapper>
-      <Helmet defaultTitle={'Phineas Walton'} titleTemplate={'%s • Phin'} />
+      <Helmet defaultTitle={'Phineas Walton'} titleTemplate={'%s • Phineas'} />
       {shouldPlayIntro ? (
         <SuccessiveTypeContainer
           transition={{ duration: 0.85 }}
