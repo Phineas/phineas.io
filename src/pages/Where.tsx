@@ -30,7 +30,7 @@ const Where = () => {
           name="Giggl"
           iconReference={GigglAppIcon}
           tagline="Consumer social"
-          role={'Co-founder & Developer'}
+          role={'CEO, Co-founder & Developer'}
           what={'I co-founded Giggl back in early 2020 to re-create being together IRL, online'}
         />
         <Co
@@ -67,12 +67,6 @@ const Where = () => {
         url={'https://github.com/phineas/phineas.io'}
         primaryLanguage={'TypeScript'}
         description="This very website"
-      />
-      <Repo
-        name={'Waifusion'}
-        url={'https://github.com/waifusion'}
-        primaryLanguage={'Multiple'}
-        description="Set of 16384 uniquely generated digital waifu NFT collectibles on the Ethereum blockchain"
       />
     </PageWrapper>
   );
