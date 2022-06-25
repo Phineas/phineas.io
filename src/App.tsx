@@ -49,6 +49,7 @@ function App() {
         <SuccessiveTypeContainer
           transition={{ duration: 0.85 }}
           animate={{ y: introEnded ? -window.innerHeight : 0 }}
+          ariaHidden
         >
           <ProgressContainer onClick={onIntroEnd}>
             <h4>
