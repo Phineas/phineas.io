@@ -42,7 +42,10 @@ const Where = () => {
           iconReference={GigglAppIcon}
           tagline="Consumer social"
           role={'Co-founder & Developer'}
-          what={'I co-founded Giggl back in early 2020 to re-create being together IRL, online'}
+          pretext={'2020-2022'}
+          what={
+            'I co-founded Giggl back in early 2020 to re-create being together IRL, online. We shifted focus onto Hop.'
+          }
         />
         <Co
           role={'Backend Engineer'}
