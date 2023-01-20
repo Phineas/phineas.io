@@ -20,9 +20,9 @@ const Etc = () => (
       me on Twitter.
     </p>
     <p>
-      If your inquiry is related to a network I manage or control (e.g. AS952 or AS399531), please send an
-      email to my email listed on the respective WHOIS contact. If it's an emergency, you can email{' '}
-      <a href="mailto:ops@sakuraji.ma">ops@sakuraji.ma</a>.
+      If your inquiry is related to a network I manage or control (e.g. AS952 or AS399531), please
+      send an email to my email listed on the respective WHOIS contact. If it's an emergency, you
+      can email <a href="mailto:ops@sakuraji.ma">ops@sakuraji.ma</a>.
     </p>
     <h2>Other</h2>
     <ul>

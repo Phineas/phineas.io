@@ -22,14 +22,14 @@ const Where = () => {
           iconReference={HivenAppIcon}
           tagline="Consumer social"
           role={'Founder & Developer'}
-          what={'I founded Hiven back in 2019 to make it easy for anyone create premium groups.'}
+          what={'I founded Hiven back in 2019 to make it easy for anyone to create premium groups.'}
           acquired
         />
         <Co
-          url="https://giggl.app"
-          name="Giggl"
+          url="https://hop.io"
+          name="Hop"
           iconReference={GigglAppIcon}
-          tagline="Consumer social"
+          tagline="Developer tools"
           role={'CEO, Co-founder & Developer'}
           what={'I co-founded Giggl back in early 2020 to re-create being together IRL, online'}
         />

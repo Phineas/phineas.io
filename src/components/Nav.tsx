@@ -47,7 +47,7 @@ const Nav = () => {
   );
 
   const onPageIndicatorDragEnd = useCallback(
-    (_event, info: PanInfo) => {
+    (_event: PointerEvent, info: PanInfo) => {
       const goal = pageIndicatorOffset + info.offset.y;
 
       const closest = Object.entries(pathnameOffsets).reduce(
@@ -100,7 +100,11 @@ const Nav = () => {
           <Row>
             <Location
               target="_blank"
-              href={doing ? `https://www.google.com/maps/search/${encodeURIComponent(doing.kv.location)}` : undefined}
+              href={
+                doing
+                  ? `https://www.google.com/maps/search/${encodeURIComponent(doing.kv.location)}`
+                  : undefined
+              }
               rel="noreferrer"
             >
               <NavigationIcon />
