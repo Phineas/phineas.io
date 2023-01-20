@@ -23,7 +23,7 @@ const Home = () => {
         <a href="https://hop.io" target="norel noopen">
           Hop
         </a>{' '}
-        as CEO .
+        as CEO.
       </p>
       <p>
         I specialize in scalable real-time systems & networking, then usually pair that with React

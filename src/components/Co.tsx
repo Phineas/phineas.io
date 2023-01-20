@@ -3,12 +3,12 @@ import styled from 'styled-components';
 import { ExternalLinkIcon } from './Icons';
 
 const calc = (x: number, y: number) => [
-  -(y - window.innerHeight / 2) / 35,
-  (x - window.innerWidth / 2) / 35,
+  -(y - window.innerHeight / 2) / 200,
+  -(x - window.innerWidth / 2) / 200,
   1.05,
 ];
 const trans = (x: number, y: number, s: number): string =>
-  `perspective(600px) rotateX(${x}deg) rotateY(${y}deg) scale(${s})`;
+  `perspective(200px) rotateX(${x}deg) rotateY(${y}deg) scale(${s})`;
 
 const Co = ({
   url,
@@ -18,6 +18,7 @@ const Co = ({
   role,
   what,
   acquired,
+  pretext,
 }: {
   url: string;
   name: string;
@@ -26,6 +27,7 @@ const Co = ({
   role: string;
   what: string;
   acquired?: boolean;
+  pretext?: string;
 }) => {
   const [props, set] = useSpring(() => ({
     xys: [0, 0, 1],
@@ -45,7 +47,7 @@ const Co = ({
         <Header>
           <img alt={`${name} Logo`} draggable={false} src={iconReference} />
           <div>
-            {acquired ? <sub>acquired</sub> : null}
+            {acquired ? <sub>acquired</sub> : pretext ? <sub>{pretext}</sub> : null}
             <h3>
               {name} <ExternalLinkIcon />
             </h3>
@@ -55,7 +57,7 @@ const Co = ({
         <Content>
           <h3>Role</h3>
           <p>{role}</p>
-          <h3>What</h3>
+          <h3>What I {pretext ? 'Did' : 'Do'}</h3>
           <p>{what}</p>
         </Content>
       </Container>
@@ -77,6 +79,7 @@ const Container = styled(animated.div)`
   border-radius: 10px;
   cursor: pointer;
   transition: all 0.1s ease;
+  height: 100%;
   will-change: transform;
 
   &:hover {

@@ -1,6 +1,7 @@
 import PageWrapper from './PageWrapper';
 import Co from '../components/Co';
 import styled from 'styled-components';
+import HopIcon from '../assets/images/hop-social-icon.png';
 import HivenAppIcon from '../assets/images/hiven-app-icon.png';
 import GigglAppIcon from '../assets/images/giggl-app-icon.jpg';
 import HonkAppIcon from '../assets/images/honk-app-icon.jpg';
@@ -17,6 +18,16 @@ const Where = () => {
       <h3>Companies</h3>
       <CoWrapper>
         <Co
+          url="https://hop.io"
+          name="Hop"
+          iconReference={HopIcon}
+          tagline="Developer tools"
+          role={'CEO, Co-founder & Developer'}
+          what={
+            'I was tired of the friction and overhead that came with backend deployment. Hop streamlines the deployment experience, with delight included.'
+          }
+        />
+        <Co
           url="https://hiven.io"
           name="Hiven"
           iconReference={HivenAppIcon}
@@ -26,19 +37,20 @@ const Where = () => {
           acquired
         />
         <Co
-          url="https://hop.io"
-          name="Hop"
+          url="https://giggl.app"
+          name="Giggl"
           iconReference={GigglAppIcon}
-          tagline="Developer tools"
-          role={'CEO, Co-founder & Developer'}
+          tagline="Consumer social"
+          role={'Co-founder & Developer'}
           what={'I co-founded Giggl back in early 2020 to re-create being together IRL, online'}
         />
         <Co
+          role={'Backend Engineer'}
           url="https://honk.me"
           name="Honk"
           iconReference={HonkAppIcon}
           tagline="Consumer social"
-          role={'Backend Engineer'}
+          pretext={'2020'}
           what={'I helped design and implement the realtime infrastructure at Honk using Elixir.'}
         />
       </CoWrapper>
@@ -76,9 +88,9 @@ const CoWrapper = styled.div`
   display: grid;
   width: 100%;
   gap: 2rem 2rem;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
 
-  @media (max-width: 1100px) {
+  @media (max-width: 1800px) {
     grid-template-columns: 1fr 1fr;
   }
 
