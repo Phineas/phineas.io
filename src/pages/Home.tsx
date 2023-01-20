@@ -54,16 +54,11 @@ const Home = () => {
         need more advanced features & customization later on, we've got you covered.
       </p>
 
-      <h3>About Giggl</h3>
       <p>
-        Giggl was what we built before focussing on Hop - we still maintain it and keep it up for
-        fun, however it's a side project.
-      </p>
-      <p>
-        Giggl makes the web collaborative via multiplayer browsers. You can spin up a Giggl "portal"
-        with someone on the other side of the world, and you'll be able to individually control a
-        browser that we host in the cloud which you can use to watch movies together, collaborate on
-        projects and everything else the www offers.
+        We've built it on our own physical hardware with our own networking stack - this gives us
+        extreme control over the entire pipeline and allows us to minimize latency at every layer,
+        as well as cost savings and the ability to innovate at a much faster pace. This is what
+        gives us our edge over competitors.
       </p>
     </PageWrapper>
   );
