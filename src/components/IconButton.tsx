@@ -13,7 +13,7 @@ const Container = styled.button`
   border: none;
   outline: none;
   background-color: transparent;
-  color: #ccc;
+  color: hsl(var(--primary-200));
   cursor: pointer;
 
   &:hover {

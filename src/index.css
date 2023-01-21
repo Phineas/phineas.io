@@ -5,18 +5,20 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: hsl(var(--primary-900));
-  color: #fff;
+  color: hsl(var(--primary-50));
   overflow: hidden;
 }
 
 ::selection {
-  background-color: #ccc;
+  background-color: hsl(var(--primary-200));
   color: hsl(var(--primary-900));
 }
 
 :root {
   --primary-900: 0, 0%, 0%;
-  --primary-800: 0, 0%, 8%;
+  --primary-800: 0, 0%, 9%;
+  --primary-200: 0, 0%, 80%;
+  --primary-50: 0, 0%, 95%;
 }
 
 code {
@@ -29,5 +31,5 @@ a {
 }
 
 p {
-  color: #ccc;
+  color: hsl(var(--primary-200));
 }
