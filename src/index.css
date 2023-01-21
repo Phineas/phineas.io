@@ -4,14 +4,19 @@ body {
     'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #000;
+  background-color: hsl(var(--primary-900));
   color: #fff;
   overflow: hidden;
 }
 
 ::selection {
   background-color: #ccc;
-  color: #000;
+  color: hsl(var(--primary-900));
+}
+
+:root {
+  --primary-900: 0, 0%, 0%;
+  --primary-800: 0, 0%, 8%;
 }
 
 code {

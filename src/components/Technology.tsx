@@ -39,7 +39,7 @@ const Container = styled.div`
   flex-direction: row;
   width: 100%;
   height: 100px;
-  border: 1px solid #101010;
+  border: 1px solid hsl(var(--primary-800));
   border-radius: 10px;
   overflow: hidden;
   margin-bottom: 1rem;
@@ -50,7 +50,7 @@ const Container = styled.div`
   }
 
   &:hover {
-    background-color: #101010;
+    background-color: hsl(var(--primary-800));
   }
 `;
 
@@ -83,7 +83,8 @@ const Column = styled.div<{ forceWidth?: number; noBorder?: boolean }>`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-right: 1px solid ${({ noBorder }) => (noBorder ? 'transparent' : '#101010')};
+  border-right: 1px solid
+    ${({ noBorder }) => (noBorder ? 'transparent' : 'hsl(var(--primary-800))')};
   padding: 1rem;
   box-sizing: border-box;
   flex-shrink: ${({ noBorder }) => (noBorder ? undefined : 0)};
@@ -91,7 +92,8 @@ const Column = styled.div<{ forceWidth?: number; noBorder?: boolean }>`
   @media (max-width: 850px) {
     height: 50px;
     width: 100%;
-    border-bottom: 1px solid ${({ noBorder }) => (noBorder ? 'transparent' : '#101010')};
+    border-bottom: 1px solid
+      ${({ noBorder }) => (noBorder ? 'transparent' : 'hsl(var(--primary-800))')};
     padding: 1rem;
     flex-shrink: 0;
     box-sizing: content-box;

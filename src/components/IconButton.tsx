@@ -17,7 +17,7 @@ const Container = styled.button`
   cursor: pointer;
 
   &:hover {
-    background-color: #101010;
+    background-color: hsl(var(--primary-800));
     color: #fff;
   }
 `;

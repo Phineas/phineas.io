@@ -170,7 +170,7 @@ const Container = styled.aside<{ openOnMobile: boolean }>`
   top: 0;
   left: 0;
   width: 15rem;
-  border-right: 1px solid #101010;
+  border-right: 1px solid hsl(var(--primary-800));
   height: 100vh;
 
   @media (max-width: 850px) {
@@ -197,7 +197,7 @@ const MobileHeader = styled.div`
   height: 65px;
   background-color: rgba(0, 0, 0, 0.8);
   backdrop-filter: blur(5px);
-  border-bottom: 1px solid #101010;
+  border-bottom: 1px solid hsl(var(--primary-800));
   flex-shrink: 0;
   z-index: 1;
 

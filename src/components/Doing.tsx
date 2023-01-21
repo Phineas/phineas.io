@@ -142,12 +142,12 @@ const Container = styled(motion(Link))`
   margin-left: -2rem;
   background-color: transparent;
   color: #ccc;
-  border-top: 1px solid #101010;
+  border-top: 1px solid hsl(var(--primary-800));
   padding: 1rem;
   cursor: pointer;
 
   &:hover {
-    background-color: #101010;
+    background-color: hsl(var(--primary-800));
     color: #fff;
   }
 
@@ -205,8 +205,8 @@ const ActivitySecondaryImage = styled.img`
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background-color: #000;
-  border: 2px solid #000;
+  background-color: hsl(var(--primary-900));
+  border: 2px solid hsl(var(--primary-900));
 `;
 
 const ActivityInfo = styled.div`
