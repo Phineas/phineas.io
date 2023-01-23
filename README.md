@@ -4,7 +4,7 @@ This is the React app that runs on [phineas.io](https://phineas.io).
 
 ## "Stack"
 
-- create-react-app
+- [Vite](https://vitejs.dev)
 - styled-components
 - TypeScript
-- [Cloudflare Pages](https://pages.cloudflare.com)
+- [Cloudflare Pages](https://pages.cloudflare.com) (don't recommend; use Vercel instead)

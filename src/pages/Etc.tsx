@@ -30,9 +30,6 @@ const Etc = () => (
         <Link to={'/presence'}>/presence</Link>
       </li>
       <li>
-        <a href={'https://phin.vc'}>phin.vc</a>
-      </li>
-      <li>
         PGP Fingerprint: <code>D740 E413 3A74 815E F5B6 F11B AF8B EE0C CF1D 0E46</code>
       </li>
       <li>

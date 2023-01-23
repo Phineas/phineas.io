@@ -30,11 +30,6 @@ const Home = () => {
         for the frontend.
       </p>
 
-      <p>
-        In my free time, I invest in and help startups with strategy, development, fundraising and
-        more. Got a big descision to make? I'm always down to chat to new founders.
-      </p>
-
       <h3>A note about networking</h3>
 
       <p>

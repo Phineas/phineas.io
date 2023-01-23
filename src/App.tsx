@@ -159,6 +159,7 @@ const ContentWrapper = styled.div`
   width: 100%;
   box-sizing: border-box;
   font-size: 1rem;
+  overflow-x: hidden;
 
   a {
     &:hover {
