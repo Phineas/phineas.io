@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import { Tooltip } from 'react-tippy';
-import PageWrapper from './PageWrapper';
+import AnimatedPageWrapper from '../layouts/AnimatedPageWrapper';
 
 const BIRTH = new Date('2001-12-28T10:15:00Z');
 const YEAR_MILLIS = 31556952000;
@@ -9,13 +9,15 @@ const Home = () => {
   const age = useMemo(() => Math.floor((Date.now() - BIRTH.getTime()) / YEAR_MILLIS), []);
 
   return (
-    <PageWrapper forceReadableWidth>
+    <AnimatedPageWrapper forceReadableWidth>
       <h1>What I Do</h1>
       <p>
         Phin. {/* @ts-ignore */}
-        <Tooltip arrow title={'28th December 2001'}>
+        {/* TODO: */}
+        {/* <Tooltip arrow title={'28th December 2001'}>
           {age}
-        </Tooltip>{' '}
+        </Tooltip>{' '} */}
+        {age}
         y/o developer, innovator and investor.
       </p>
       <p>
@@ -60,7 +62,7 @@ const Home = () => {
         as well as cost savings and the ability to innovate at a much faster pace. This is what
         gives us our edge over competitors.
       </p>
-    </PageWrapper>
+    </AnimatedPageWrapper>
   );
 };
 

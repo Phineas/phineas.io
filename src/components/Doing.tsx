@@ -1,11 +1,10 @@
 import { motion } from 'framer-motion';
 import { forwardRef, useEffect, useMemo, useState } from 'react';
-import { Link } from 'react-router-dom';
 import styled, { keyframes } from 'styled-components';
 import { Presence } from '../types/lanyard';
-import SpotifyLogo from '../assets/images/spotify-logo.svg';
 import { useAtom } from 'jotai';
 import { doingAtom } from '../state/lanyard';
+import Link from 'next/link';
 
 // Thanks to Tim (https://github.com/timcole/timcole.me/blob/%F0%9F%A6%84/components/lanyard.tsx) for the types
 
@@ -92,7 +91,7 @@ const Doing = (
   return (
     <>
       {doing?.listening_to_spotify ? (
-        <Container ref={ref} to={'/presence'} {...props}>
+        <Container ref={ref} href={'/presence'} {...props}>
           <h5>
             Listening to Spotify <LiveDot />
           </h5>
@@ -100,7 +99,7 @@ const Doing = (
             <ActivityRow>
               <ActivityImageContainer>
                 <ActivityImage src={doing.spotify.album_art_url} />
-                <ActivitySecondaryImage src={SpotifyLogo} />
+                <ActivitySecondaryImage src={'/assets/images/spotify-logo.svg'} />
               </ActivityImageContainer>
 
               <ActivityInfo>
@@ -112,7 +111,7 @@ const Doing = (
         </Container>
       ) : null}
       {currentActivity ? (
-        <Container to={'/presence'} {...props}>
+        <Container href={'/presence'} {...props}>
           <h5>Doing something</h5>
           <ActivityRow>
             {currentActivity.assets ? (

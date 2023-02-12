@@ -1,4 +1,3 @@
-import PageWrapper from './PageWrapper';
 import Technology from '../components/Technology';
 import {
   ElixirLogo,
@@ -8,14 +7,15 @@ import {
   SolidityLogo,
   TypescriptLogo,
 } from '../components/Icons';
-import { Helmet } from 'react-helmet';
+import Head from 'next/head';
+import AnimatedPageWrapper from '../layouts/AnimatedPageWrapper';
 
 const How = () => {
   return (
-    <PageWrapper>
-      <Helmet>
+    <AnimatedPageWrapper>
+      <Head>
         <title>How</title>
-      </Helmet>
+      </Head>
       <h1>How I Do It</h1>
       <p>
         I highly leverage new bleeding-edge technologies and languages like Elixir to stay on top of
@@ -27,7 +27,9 @@ const How = () => {
         icon={<ElixirLogo />}
         name="Elixir"
         type="Realtime, Backend"
-        useCase={'Building fault-tolerant realtime systems that scale out across multiple nodes'}
+        useCase={
+          'Building fault-tolerant, highly-stateful realtime systems that scale out across multiple nodes'
+        }
       />
 
       <Technology
@@ -63,7 +65,7 @@ const How = () => {
         type="Message queue"
         useCase={'Messaging between different services in a robust & durable way'}
       />
-    </PageWrapper>
+    </AnimatedPageWrapper>
   );
 };
 

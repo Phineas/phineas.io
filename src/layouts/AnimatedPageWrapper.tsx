@@ -19,7 +19,7 @@ const pageTransition = {
   duration: 0.4,
 };
 
-const PageWrapper = ({
+const AnimatedPageWrapper = ({
   children,
   forceReadableWidth,
 }: {
@@ -44,4 +44,4 @@ const PageWrapper = ({
   );
 };
 
-export default PageWrapper;
+export default AnimatedPageWrapper;

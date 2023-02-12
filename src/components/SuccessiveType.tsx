@@ -22,7 +22,9 @@ interface ISuccessiveTypeProps {
 }
 
 const SuccessiveType = ({ words, speed, userSkipped, onEnd }: ISuccessiveTypeProps) => {
-  const [play] = useSound('/p-static/sounds/type.ogg');
+  const [play] = useSound('/assets/sounds/type.ogg', {
+    volume: 0.8,
+  });
 
   const [index, setIndex] = useState(0);
 

@@ -25,3 +25,5 @@ yarn-error.log*
 *.bun
 
 /dist
+
+.next

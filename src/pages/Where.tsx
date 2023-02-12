@@ -1,26 +1,23 @@
-import PageWrapper from './PageWrapper';
 import Co from '../components/Co';
 import styled from 'styled-components';
-import HopIcon from '../assets/images/hop-social-icon.png';
-import HivenAppIcon from '../assets/images/hiven-app-icon.png';
-import GigglAppIcon from '../assets/images/giggl-app-icon.jpg';
-import HonkAppIcon from '../assets/images/honk-app-icon.jpg';
 import Repo from '../components/Repo';
-import { Helmet } from 'react-helmet';
+import Head from 'next/head';
+import React from 'react';
+import AnimatedPageWrapper from '../layouts/AnimatedPageWrapper';
 
 const Where = () => {
   return (
-    <PageWrapper>
-      <Helmet>
+    <AnimatedPageWrapper>
+      <Head>
         <title>Where</title>
-      </Helmet>
+      </Head>
       <h1>Where I've Done It</h1>
       <h3>Companies</h3>
       <CoWrapper>
         <Co
           url="https://hop.io"
           name="Hop"
-          iconReference={HopIcon}
+          iconReference={'/assets/images/hop-social-icon.png'}
           tagline="Developer tools"
           role={'CEO, Co-founder & Developer'}
           what={
@@ -30,7 +27,7 @@ const Where = () => {
         <Co
           url="https://hiven.io"
           name="Hiven"
-          iconReference={HivenAppIcon}
+          iconReference={'/assets/images/hiven-app-icon.png'}
           tagline="Consumer social"
           role={'Founder & Developer'}
           what={'I founded Hiven back in 2019 to make it easy for anyone to create premium groups.'}
@@ -39,7 +36,7 @@ const Where = () => {
         <Co
           url="https://giggl.app"
           name="Giggl"
-          iconReference={GigglAppIcon}
+          iconReference={'/assets/images/giggl-app-icon.jpg'}
           tagline="Consumer social"
           role={'Co-founder & Developer'}
           pretext={'2020-2022'}
@@ -51,7 +48,7 @@ const Where = () => {
           role={'Backend Engineer'}
           url="https://honk.me"
           name="Honk"
-          iconReference={HonkAppIcon}
+          iconReference={'/assets/images/honk-app-icon.jpg'}
           tagline="Consumer social"
           pretext={'2020'}
           what={'I helped design and implement the realtime infrastructure at Honk using Elixir.'}
@@ -83,7 +80,7 @@ const Where = () => {
         primaryLanguage={'TypeScript'}
         description="This very website"
       />
-    </PageWrapper>
+    </AnimatedPageWrapper>
   );
 };
 

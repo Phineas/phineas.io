@@ -3,25 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^5.11.4",
-    "@testing-library/react": "^11.1.0",
-    "@testing-library/user-event": "^12.1.10",
-    "@types/jest": "^26.0.15",
-    "@types/node": "^12.0.0",
-    "@types/react": "^18.0.27",
-    "@types/react-dom": "^18.0.10",
-    "@types/react-helmet": "^6.1.0",
-    "@types/react-router-dom": "^5.1.7",
-    "@types/styled-components": "^5.1.26",
     "framer-motion": "^8.5.0",
     "is-svg": "4.2.2",
     "jotai": "^1.4.4",
+    "next": "^13.1.6",
     "react": "^18.2.0",
     "react-content-loader": "^6.0.3",
     "react-dom": "^18.2.0",
-    "react-helmet": "^6.1.0",
-    "react-router": "^5.2.0",
-    "react-router-dom": "^5.2.0",
     "react-spring": "^9.6.1",
     "react-tippy": "^1.4.0",
     "styled-components": "^5.3.6",
@@ -30,9 +18,10 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "start": "vite",
-    "build": "tsc && vite build",
-    "serve": "vite preview"
+    "dev": "next dev",
+    "start": "next dev",
+    "build": "tsc && next build",
+    "serve": "next start"
   },
   "eslintConfig": {
     "extends": [
@@ -53,10 +42,14 @@
     ]
   },
   "devDependencies": {
-    "@vitejs/plugin-react": "^3.0.1",
     "prettier": "^2.5.0",
-    "vite": "^4.0.4",
-    "vite-plugin-svgr": "^2.4.0",
-    "vite-tsconfig-paths": "^4.0.5"
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.10",
+    "@types/jest": "^26.0.15",
+    "@types/node": "^12.0.0",
+    "@types/react": "^18.0.27",
+    "@types/react-dom": "^18.0.10",
+    "@types/styled-components": "^5.1.26"
   }
 }

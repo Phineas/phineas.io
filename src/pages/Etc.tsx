@@ -1,12 +1,12 @@
-import { Helmet } from 'react-helmet';
-import { Link } from 'react-router-dom';
-import PageWrapper from './PageWrapper';
+import Head from 'next/head';
+import Link from 'next/link';
+import AnimatedPageWrapper from '../layouts/AnimatedPageWrapper';
 
 const Etc = () => (
-  <PageWrapper forceReadableWidth>
-    <Helmet>
+  <AnimatedPageWrapper forceReadableWidth>
+    <Head>
       <title>/etc</title>
-    </Helmet>
+    </Head>
     <h1>/etc</h1>
     <h2>Thanks</h2>
     <p>
@@ -27,7 +27,7 @@ const Etc = () => (
     <h2>Other</h2>
     <ul>
       <li>
-        <Link to={'/presence'}>/presence</Link>
+        <Link href={'/presence'}>/presence</Link>
       </li>
       <li>
         <a href={'https://phin.vc'}>phin.vc</a>
@@ -39,7 +39,7 @@ const Etc = () => (
         Primary ETH Address: <code>phin.eth (0xd3AbB464df46568d1E72Fa5F156F05458f1AB26e)</code>
       </li>
     </ul>
-  </PageWrapper>
+  </AnimatedPageWrapper>
 );
 
 export default Etc;

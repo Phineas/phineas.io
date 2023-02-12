@@ -1,11 +1,11 @@
-import { Helmet } from 'react-helmet';
-import PageWrapper from './PageWrapper';
+import Head from 'next/head';
+import AnimatedPageWrapper from '../layouts/AnimatedPageWrapper';
 
 const Presence = () => (
-  <PageWrapper forceReadableWidth>
-    <Helmet>
+  <AnimatedPageWrapper forceReadableWidth>
+    <Head>
       <title>Presence</title>
-    </Helmet>
+    </Head>
     <h1>👀 Presence</h1>
     <p>
       You may have noticed that while I'm doing something like listening to Spotify, programming in
@@ -17,7 +17,7 @@ const Presence = () => (
       which pulls live presences from Discord and updates an API and WebSocket service. It takes{' '}
       {'<'}10 seconds to set up, you just have to join a Discord server!
     </p>
-  </PageWrapper>
+  </AnimatedPageWrapper>
 );
 
 export default Presence;

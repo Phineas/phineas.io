@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App';
+import App from './pages';
 import './index.css';
 import 'react-tippy/dist/tippy.css';
 

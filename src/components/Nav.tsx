@@ -1,7 +1,5 @@
 import { motion, PanInfo } from 'framer-motion';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { useHistory, useLocation } from 'react-router';
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { GitHubLogo, KeyIcon, MenuIcon, NavigationIcon, TwitterLogo, XIcon } from './Icons';
 import Doing from './Doing';
@@ -9,6 +7,8 @@ import useSound from 'use-sound';
 import { useAtom } from 'jotai';
 import { doingAtom } from '../state/lanyard';
 import ContentLoader from 'react-content-loader';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 const pathnameOffsets: { [key: string]: number } = {
   '/': 0,
@@ -18,10 +18,9 @@ const pathnameOffsets: { [key: string]: number } = {
 };
 
 const Nav = () => {
-  const history = useHistory();
-  const { pathname } = useLocation();
+  const { asPath: pathname } = useRouter();
 
-  const [playSwitchPageSound] = useSound('/p-static/sounds/switch-page.mp3');
+  const [playSwitchPageSound] = useSound('/assets/sounds/switch-page.mp3', { volume: 0.5 });
 
   const [dragYOffset, setDragYOffset] = useState(0);
   const [openOnMobile, setOpenOnMobile] = useState(false);
@@ -61,9 +60,9 @@ const Nav = () => {
       if (closest[0] === pathname) return;
 
       setDragYOffset(dragYOffset + info.offset.y + info.velocity.y);
-      history.push(closest[0]);
+      // history.push(closest[0]);
     },
-    [history, pageIndicatorOffset, dragYOffset, pathname]
+    [pageIndicatorOffset, dragYOffset, pathname]
   );
 
   const toggleMobileMenu = useCallback(() => setOpenOnMobile(!openOnMobile), [openOnMobile]);
@@ -86,6 +85,7 @@ const Nav = () => {
             onDragEnd={onPageIndicatorDragEnd}
             dragConstraints={dragConstraintsRef}
             animate={{ top: pageIndicatorOffsetWithDecoration }}
+            initial={false}
           />
         ) : null}
         <Items>
@@ -126,16 +126,16 @@ const Nav = () => {
           </Row>
 
           <div ref={dragConstraintsRef}>
-            <Page active={pathname === '/' ? 1 : 0} to="/">
+            <Page active={pathname === '/' ? 1 : 0} href="/">
               what I do
             </Page>
-            <Page active={pathname === '/where' ? 1 : 0} to="/where">
+            <Page active={pathname === '/where' ? 1 : 0} href="/where">
               where I've done it
             </Page>
-            <Page active={pathname === '/how' ? 1 : 0} to="/how">
+            <Page active={pathname === '/how' ? 1 : 0} href="/how">
               how I do it
             </Page>
-            <Page active={pathname === '/etc' ? 1 : 0} to="/etc">
+            <Page active={pathname === '/etc' ? 1 : 0} href="/etc">
               more + contact
             </Page>
           </div>
