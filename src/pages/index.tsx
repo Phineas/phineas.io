@@ -1,5 +1,4 @@
 import { useMemo } from 'react';
-import { Tooltip } from 'react-tippy';
 import AnimatedPageWrapper from '../layouts/AnimatedPageWrapper';
 
 const BIRTH = new Date('2001-12-28T10:15:00Z');
@@ -12,13 +11,8 @@ const Home = () => {
     <AnimatedPageWrapper forceReadableWidth>
       <h1>What I Do</h1>
       <p>
-        Phin. {/* @ts-ignore */}
-        {/* TODO: */}
-        {/* <Tooltip arrow title={'28th December 2001'}>
-          {age}
-        </Tooltip>{' '} */}
-        {age}
-        y/o developer, innovator and investor.
+        Phin.
+        {age} y/o developer, innovator and investor.
       </p>
       <p>
         I design, build and publish products of quality and reliability. Currently, I'm working on{' '}
