@@ -10,10 +10,7 @@ const Home = () => {
   return (
     <AnimatedPageWrapper forceReadableWidth>
       <h1>What I Do</h1>
-      <p>
-        Phin.
-        {age} y/o developer, innovator and investor.
-      </p>
+      <p>Phin. {age} y/o developer, innovator and investor.</p>
       <p>
         I design, build and publish products of quality and reliability. Currently, I'm working on{' '}
         <a href="https://hop.io" target="norel noopen">
@@ -24,11 +21,6 @@ const Home = () => {
       <p>
         I specialize in scalable real-time systems & networking, then usually pair that with React
         for the frontend.
-      </p>
-
-      <p>
-        In my free time, I invest in and help startups with strategy, development, fundraising and
-        more. Got a big descision to make? I'm always down to chat to new founders.
       </p>
 
       <h3>A note about networking</h3>
